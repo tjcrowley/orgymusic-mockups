@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ORGY — Mockup 2: Modern Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5f4f0;
+    --ink:#111111;
+    --dim:#6b6b6b;
+    --line:#dcdad3;
+    --accent:#ff3b1f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,.display{font-family:'Archivo Black',sans-serif;text-transform:uppercase;line-height:0.98}
+  a{color:inherit;text-decoration:none}
+
+  nav{
+    position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+    padding:18px 20px;background:var(--bg);border-bottom:2px solid var(--ink);
+  }
+  .logo{font-family:'Archivo Black',sans-serif;font-size:1.3rem}
+  .navlinks{display:none;gap:26px;font-size:0.85rem;text-transform:uppercase;font-weight:600}
+  .burger{width:30px;height:24px;position:relative;background:none;border:none;cursor:pointer}
+  .burger span{position:absolute;left:0;right:0;height:2px;background:var(--ink)}
+  .burger span:nth-child(1){top:0}
+  .burger span:nth-child(2){top:11px}
+  .burger span:nth-child(3){top:22px}
+  @media(min-width:860px){.navlinks{display:flex}.burger{display:none}}
+  #mobileMenu{
+    position:fixed;inset:0;background:var(--ink);color:#fff;z-index:99;
+    display:flex;flex-direction:column;justify-content:center;gap:26px;padding:0 30px;
+    transform:translateX(100%);transition:transform .3s ease;
+  }
+  #mobileMenu.open{transform:translateX(0)}
+  #mobileMenu a{font-family:'Archivo Black',sans-serif;font-size:2rem;text-transform:uppercase}
+
+  .hero{padding:80px 20px 60px;border-bottom:2px solid var(--ink)}
+  .hero-inner{max-width:1200px;margin:0 auto}
+  .hero .eyebrow{color:var(--accent);font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:0.8rem;margin-bottom:14px}
+  .hero h1{font-size:clamp(3.5rem,14vw,10rem);letter-spacing:-2px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:24px;margin-top:26px;color:var(--dim);font-size:0.95rem}
+  .hero-strip{
+    margin-top:40px;display:flex;flex-wrap:wrap;gap:14px;
+  }
+  .btn{padding:14px 26px;font-weight:700;text-transform:uppercase;font-size:0.8rem;letter-spacing:1px;border:2px solid var(--ink)}
+  .btn.solid{background:var(--ink);color:#fff}
+  .btn.solid:hover{background:var(--accent);border-color:var(--accent)}
+  .btn.ghost:hover{background:var(--ink);color:#fff}
+
+  section{padding:70px 20px;border-bottom:2px solid var(--ink)}
+  .section-inner{max-width:1200px;margin:0 auto}
+  .grid-2{display:grid;grid-template-columns:1fr;gap:40px}
+  @media(min-width:860px){.grid-2{grid-template-columns:1fr 1.4fr}}
+  .num-label{font-size:0.8rem;font-weight:700;color:var(--accent);margin-bottom:10px}
+  .section-title{font-size:clamp(2.2rem,6vw,4rem);margin-bottom:10px}
+
+  .tour-row{display:grid;grid-template-columns:80px 1fr auto;gap:16px;align-items:center;padding:20px 0;border-top:1px solid var(--line)}
+  .tour-row:last-child{border-bottom:1px solid var(--line)}
+  .tour-row .m{font-weight:700;color:var(--accent);font-size:0.9rem}
+  .tour-row .d{font-family:'Archivo Black',sans-serif;font-size:1.6rem}
+  .tour-row .place b{display:block}
+  .tour-row .place span{color:var(--dim);font-size:0.9rem}
+
+  .disco-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;background:var(--ink)}
+  .disco-card{background:var(--bg);aspect-ratio:1;display:flex;align-items:flex-end;padding:20px}
+  .disco-card span{font-family:'Archivo Black',sans-serif;font-size:1.3rem;text-transform:uppercase}
+
+  footer{padding:60px 20px;text-align:center}
+  .social-row{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:20px 0;font-weight:600;text-transform:uppercase;font-size:0.85rem}
+  .social-row a:hover{color:var(--accent)}
+  .placeholder-tag{position:fixed;bottom:14px;right:14px;background:var(--ink);color:#fff;font-size:0.65rem;letter-spacing:1px;text-transform:uppercase;padding:6px 10px;z-index:200;font-family:'Inter',sans-serif}
+</style>
+</head>
+<body>
+<div class="placeholder-tag">Mockup 2 — Modern Editorial</div>
+<nav>
+  <div class="logo">ORGY</div>
+  <div class="navlinks">
+    <a href="#tour">Tour</a><a href="#music">Music</a><a href="#band">Band</a><a href="#contact">Contact</a>
+  </div>
+  <button class="burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')"><span></span><span></span><span></span></button>
+</nav>
+<div id="mobileMenu">
+  <a href="#tour" onclick="document.getElementById('mobileMenu').classList.remove('open')">Tour</a>
+  <a href="#music" onclick="document.getElementById('mobileMenu').classList.remove('open')">Music</a>
+  <a href="#band" onclick="document.getElementById('mobileMenu').classList.remove('open')">Band</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Los Angeles, CA — Since 1994</div>
+    <h1>ORGY</h1>
+    <div class="hero-meta">
+      <span>Candyass</span><span>Vapor Transmission</span><span>Punk Statik Paranoia</span>
+    </div>
+    <div class="hero-strip">
+      <a class="btn solid" href="#tour">Tour Dates</a>
+      <a class="btn ghost" href="#music">Discography</a>
+    </div>
+  </div>
+</div>
+
+<section id="tour">
+  <div class="section-inner grid-2">
+    <div>
+      <div class="num-label">01 / Live</div>
+      <h2 class="section-title">Tour</h2>
+      <p style="color:var(--dim)">All announced 2026 dates. UK tour + VIP access details coming soon.</p>
+    </div>
+    <div>
+      <div class="tour-row"><div class="d">20<br><span class="m">AUG</span></div><div class="place"><b>West Palm Beach, FL</b><span>iTHINK Financial Amphitheatre</span></div><a class="btn solid" href="#">Tickets</a></div>
+      <div class="tour-row"><div class="d">21<br><span class="m">AUG</span></div><div class="place"><b>Tampa, FL</b><span>MIDFLORIDA Credit Union Amphitheatre</span></div><a class="btn solid" href="#">Tickets</a></div>
+      <div class="tour-row"><div class="d">23<br><span class="m">AUG</span></div><div class="place"><b>Alpharetta, GA</b><span>Ameris Bank Amphitheatre</span></div><a class="btn solid" href="#">Tickets</a></div>
+      <div class="tour-row"><div class="d">24<br><span class="m">AUG</span></div><div class="place"><b>Charlotte, NC</b><span>PNC Music Pavilion</span></div><a class="btn solid" href="#">Tickets</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="music">
+  <div class="section-inner">
+    <div class="num-label">02 / Discography</div>
+    <h2 class="section-title">Music</h2>
+  </div>
+  <div class="disco-grid" style="margin-top:30px">
+    <div class="disco-card"><span>Candyass</span></div>
+    <div class="disco-card"><span>Vapor Transmission</span></div>
+    <div class="disco-card"><span>Punk Statik Paranoia</span></div>
+    <div class="disco-card"><span>Talk Sick</span></div>
+  </div>
+</section>
+
+<section id="band">
+  <div class="section-inner grid-2">
+    <div>
+      <div class="num-label">03 / About</div>
+      <h2 class="section-title">Band</h2>
+    </div>
+    <p style="max-width:620px;font-size:1.05rem;line-height:1.6">[ Placeholder — band bio copy from existing site content goes here. Pairs well with a large editorial press photo running the full right column on desktop. ]</p>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="logo" style="font-size:2rem">ORGY</div>
+  <div class="social-row">
+    <a href="#">Facebook</a><a href="#">X / Twitter</a><a href="#">YouTube</a><a href="#">Instagram</a><a href="#">Merch Store</a>
+  </div>
+  <p style="color:var(--dim)">Booking &amp; press: management@d1music.com — placeholder</p>
+  <p style="margin-top:20px;font-size:0.75rem;color:var(--dim)">© 2026 D1 Music. Site rebuild mockup — not for production use.</p>
+</footer>
+</body>
+</html>

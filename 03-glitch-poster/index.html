@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ORGY — Mockup 3: Glitch Poster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#000;
+    --fg:#eee;
+    --acid:#d4ff2a;
+    --mag:#ff1f8f;
+    --cyan:#1febff;
+    --dim:#888;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--fg);font-family:'JetBrains Mono',monospace;overflow-x:hidden}
+  h1,h2,h3,.display{font-family:'Bebas Neue',sans-serif;letter-spacing:1px;line-height:0.9;text-transform:uppercase}
+  a{color:inherit;text-decoration:none}
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+    padding:16px 18px;border-bottom:2px solid var(--fg);background:#000;
+  }
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;position:relative}
+  .logo::after{content:"ORGY";position:absolute;left:2px;top:0;color:var(--mag);z-index:-1;opacity:0.7}
+  .navlinks{display:none;gap:22px;font-size:0.8rem;text-transform:uppercase}
+  .navlinks a{border:1px solid var(--fg);padding:6px 12px}
+  .navlinks a:hover{background:var(--acid);color:#000;border-color:var(--acid)}
+  .burger{width:30px;height:24px;position:relative;background:none;border:none;cursor:pointer}
+  .burger span{position:absolute;left:0;right:0;height:3px;background:var(--fg)}
+  .burger span:nth-child(1){top:0}
+  .burger span:nth-child(2){top:10px;background:var(--acid)}
+  .burger span:nth-child(3){top:20px}
+  @media(min-width:860px){.navlinks{display:flex}.burger{display:none}}
+  #mobileMenu{
+    position:fixed;inset:0;background:#000;z-index:99;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:0 30px;
+    transform:scale(0.9);opacity:0;pointer-events:none;transition:.25s ease;
+  }
+  #mobileMenu.open{transform:scale(1);opacity:1;pointer-events:auto}
+  #mobileMenu a{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;border-bottom:3px solid var(--acid);width:fit-content}
+
+  .hero{
+    min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;
+    padding:100px 16px 60px;
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0 1px, transparent 1px 3px);
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 30% 20%, rgba(212,255,42,0.08), transparent 40%),
+               radial-gradient(circle at 80% 80%, rgba(255,31,143,0.1), transparent 45%);
+  }
+  .hero-inner{position:relative;text-align:center;max-width:900px}
+  .tag{display:inline-block;border:1px solid var(--acid);color:var(--acid);font-size:0.75rem;padding:5px 12px;margin-bottom:20px}
+  .glitch-title{
+    font-size:clamp(3.4rem,17vw,11rem);position:relative;color:var(--fg);
+  }
+  .glitch-title span{position:absolute;top:0;left:0;right:0;width:100%}
+  .glitch-title .g1{color:var(--mag);clip-path:inset(0 0 55% 0);transform:translate(-4px,-2px);animation:g1 3.5s infinite}
+  .glitch-title .g2{color:var(--cyan);clip-path:inset(55% 0 0 0);transform:translate(4px,2px);animation:g2 2.7s infinite}
+  @keyframes g1{0%,90%,100%{transform:translate(-4px,-2px)}92%{transform:translate(6px,1px)}95%{transform:translate(-8px,2px)}}
+  @keyframes g2{0%,90%,100%{transform:translate(4px,2px)}92%{transform:translate(-6px,-1px)}95%{transform:translate(8px,-3px)}}
+  .hero-sub{margin-top:20px;color:var(--dim);font-size:0.95rem;letter-spacing:1px}
+  .hero-cta{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{padding:14px 26px;font-size:0.8rem;text-transform:uppercase;border:2px solid var(--fg);font-weight:700;letter-spacing:1px}
+  .btn.acid{background:var(--acid);border-color:var(--acid);color:#000}
+  .btn.acid:hover{background:#fff;border-color:#fff}
+  .btn.mag:hover{background:var(--mag);border-color:var(--mag)}
+
+  section{padding:70px 18px;border-top:2px dashed #333}
+  .section-inner{max-width:1100px;margin:0 auto}
+  .tape-label{display:inline-block;background:var(--acid);color:#000;font-size:0.8rem;font-weight:700;padding:4px 10px;transform:rotate(-2deg);margin-bottom:16px}
+  .section-title{font-size:clamp(2.4rem,7vw,4.5rem);margin-bottom:30px}
+
+  .tour-strip{display:flex;flex-direction:column;gap:0}
+  .tour-item{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding:18px 0;border-bottom:1px solid #222}
+  .tour-item .d{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--acid);min-width:120px}
+  .tour-item .place b{display:block;font-size:1rem}
+  .tour-item .place span{color:var(--dim);font-size:0.85rem}
+  .tour-item .btn{padding:8px 16px;font-size:0.7rem}
+
+  .disco-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .disco-tile{
+    aspect-ratio:1;border:2px solid var(--fg);display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;
+    position:relative;overflow:hidden;
+  }
+  .disco-tile:nth-child(odd){border-color:var(--mag)}
+  .disco-tile:nth-child(even){border-color:var(--cyan)}
+  .disco-tile span{font-family:'Bebas Neue',sans-serif;font-size:1.2rem}
+  .disco-tile:hover{background:var(--fg);color:#000}
+
+  footer{padding:60px 18px 40px;text-align:center;border-top:2px solid var(--fg)}
+  .social-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:20px 0}
+  .social-row a{border:1px solid var(--dim);padding:6px 12px;font-size:0.75rem;text-transform:uppercase}
+  .social-row a:hover{border-color:var(--acid);color:var(--acid)}
+  .placeholder-tag{position:fixed;bottom:14px;right:14px;background:var(--mag);color:#000;font-size:0.65rem;letter-spacing:1px;text-transform:uppercase;padding:6px 10px;z-index:200;font-weight:700}
+</style>
+</head>
+<body>
+<div class="placeholder-tag">Mockup 3 — Glitch Poster</div>
+<nav>
+  <div class="logo">ORGY</div>
+  <div class="navlinks"><a href="#tour">Tour</a><a href="#music">Music</a><a href="#band">Band</a><a href="#contact">Contact</a></div>
+  <button class="burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')"><span></span><span></span><span></span></button>
+</nav>
+<div id="mobileMenu">
+  <a href="#tour" onclick="document.getElementById('mobileMenu').classList.remove('open')">Tour</a>
+  <a href="#music" onclick="document.getElementById('mobileMenu').classList.remove('open')">Music</a>
+  <a href="#band" onclick="document.getElementById('mobileMenu').classList.remove('open')">Band</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="tag">// SINCE 1994 — LOS ANGELES</div>
+    <h1 class="glitch-title">ORGY<span class="g1">ORGY</span><span class="g2">ORGY</span></h1>
+    <p class="hero-sub">CANDYASS / VAPOR TRANSMISSION / PUNK STATIK PARANOIA</p>
+    <div class="hero-cta">
+      <a class="btn acid" href="#tour">TOUR DATES</a>
+      <a class="btn mag" href="#music">LISTEN</a>
+    </div>
+  </div>
+</div>
+
+<section id="tour">
+  <div class="section-inner">
+    <div class="tape-label">LIVE // 2026</div>
+    <h2 class="section-title">On Tour</h2>
+    <div class="tour-strip">
+      <div class="tour-item"><div class="d">08.20</div><div class="place"><b>West Palm Beach, FL</b><span>iTHINK Financial Amphitheatre</span></div><a class="btn acid" href="#">Tix</a></div>
+      <div class="tour-item"><div class="d">08.21</div><div class="place"><b>Tampa, FL</b><span>MIDFLORIDA Credit Union Amphitheatre</span></div><a class="btn acid" href="#">Tix</a></div>
+      <div class="tour-item"><div class="d">08.23</div><div class="place"><b>Alpharetta, GA</b><span>Ameris Bank Amphitheatre</span></div><a class="btn acid" href="#">Tix</a></div>
+      <div class="tour-item"><div class="d">08.24</div><div class="place"><b>Charlotte, NC</b><span>PNC Music Pavilion</span></div><a class="btn acid" href="#">Tix</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="music">
+  <div class="section-inner">
+    <div class="tape-label">DISCOGRAPHY</div>
+    <h2 class="section-title">Music</h2>
+    <div class="disco-strip">
+      <div class="disco-tile"><span>Candyass</span></div>
+      <div class="disco-tile"><span>Vapor Transmission</span></div>
+      <div class="disco-tile"><span>Punk Statik Paranoia</span></div>
+      <div class="disco-tile"><span>Talk Sick</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="band">
+  <div class="section-inner">
+    <div class="tape-label">ABOUT</div>
+    <h2 class="section-title">The Band</h2>
+    <p style="max-width:640px;color:var(--dim);line-height:1.7">[ Placeholder — bio copy + torn-paper collage press photos go here, treated with duotone acid/magenta overlay to match this direction. ]</p>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="logo" style="font-size:2.4rem">ORGY</div>
+  <div class="social-row">
+    <a href="#">Facebook</a><a href="#">X / Twitter</a><a href="#">YouTube</a><a href="#">Instagram</a><a href="#">Merch Store</a>
+  </div>
+  <p style="color:var(--dim);margin-top:10px">Booking &amp; press: management@d1music.com — placeholder</p>
+  <p style="margin-top:20px;font-size:0.7rem;color:#555">© 2026 D1 Music. Site rebuild mockup — not for production use.</p>
+</footer>
+</body>
+</html>

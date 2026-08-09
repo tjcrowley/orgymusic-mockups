@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ORGY — Mockup 1: Industrial Parallax</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0c;
+    --bg-2:#131317;
+    --accent:#c9ff3d;
+    --accent-2:#ff2d55;
+    --fg:#f2f2f0;
+    --fg-dim:#9a9aa2;
+    --line:#232329;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--fg);
+    font-family:'Space Grotesk',sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:0.5px;line-height:0.95}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  /* ---- NAV ---- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 20px;
+    background:rgba(10,10,12,0.7);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .logo{font-family:'Anton',sans-serif;font-size:1.4rem;letter-spacing:2px}
+  .logo span{color:var(--accent)}
+  .navlinks{display:none;gap:28px;font-size:0.85rem;letter-spacing:1px;text-transform:uppercase}
+  .navlinks a:hover{color:var(--accent)}
+  .burger{width:32px;height:32px;display:flex;flex-direction:column;justify-content:center;gap:6px;cursor:pointer;background:none;border:none}
+  .burger span{display:block;height:2px;background:var(--fg);width:100%}
+  @media(min-width:860px){
+    .navlinks{display:flex}
+    .burger{display:none}
+  }
+  #mobileMenu{
+    position:fixed;inset:0;background:var(--bg);z-index:99;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
+    transform:translateY(-100%);transition:transform .35s ease;
+  }
+  #mobileMenu.open{transform:translateY(0)}
+  #mobileMenu a{font-family:'Anton',sans-serif;font-size:1.8rem;text-transform:uppercase}
+
+  /* ---- PARALLAX HERO ---- */
+  .parallax-wrap{
+    position:relative;height:100vh;min-height:560px;
+    overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .layer{position:absolute;inset:0;will-change:transform;background-repeat:no-repeat;background-size:cover;background-position:center}
+  .layer-bg{
+    background:
+      radial-gradient(ellipse at 50% 30%, #1c1c22 0%, #0a0a0c 70%);
+  }
+  .layer-grid{
+    background-image:linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:48px 48px;
+    opacity:0.35;
+  }
+  .layer-noise{
+    opacity:0.06;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .hero-content{
+    position:relative;z-index:2;text-align:center;padding:0 20px;
+  }
+  .hero-content .kicker{
+    color:var(--accent);letter-spacing:4px;font-size:0.75rem;text-transform:uppercase;margin-bottom:14px;
+  }
+  .hero-content h1{
+    font-size:clamp(3rem,14vw,9rem);
+    background:linear-gradient(180deg,#fff, #8a8a92);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero-content .sub{margin-top:16px;color:var(--fg-dim);font-size:clamp(0.9rem,2.4vw,1.2rem)}
+  .hero-cta{
+    margin-top:34px;display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center;
+  }
+  .btn{
+    padding:14px 28px;border-radius:2px;font-size:0.85rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;
+    border:1px solid var(--fg);transition:.2s;
+  }
+  .btn.solid{background:var(--accent);color:#0a0a0c;border-color:var(--accent)}
+  .btn.solid:hover{background:#fff}
+  .btn.ghost:hover{background:var(--fg);color:#0a0a0c}
+  .scroll-cue{
+    position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+    font-size:0.7rem;letter-spacing:3px;color:var(--fg-dim);text-transform:uppercase;
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+  }
+  .scroll-cue .bar{width:1px;height:36px;background:linear-gradient(var(--fg-dim),transparent);animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:.2}50%{opacity:1}}
+
+  /* ---- SECTIONS ---- */
+  section{padding:100px 20px;position:relative}
+  .section-inner{max-width:1100px;margin:0 auto}
+  .section-label{color:var(--accent);letter-spacing:3px;font-size:0.75rem;text-transform:uppercase;margin-bottom:10px}
+  .section-title{font-size:clamp(2rem,6vw,3.4rem);margin-bottom:40px}
+
+  /* parallax band-photo break */
+  .band-break{
+    height:70vh;min-height:420px;position:relative;overflow:hidden;
+    display:flex;align-items:flex-end;
+  }
+  .band-break .layer-photo{
+    background:linear-gradient(180deg, rgba(10,10,12,0) 0%, rgba(10,10,12,0.95) 100%), repeating-linear-gradient(135deg,#1a1a1f 0 2px, #141418 2px 4px);
+  }
+  .band-break-caption{position:relative;z-index:2;padding:40px;max-width:700px}
+  .band-break-caption h3{font-size:clamp(1.6rem,5vw,2.6rem);margin-bottom:12px}
+  .band-break-caption p{color:var(--fg-dim);max-width:520px}
+
+  /* tour list */
+  .tour-list{border-top:1px solid var(--line)}
+  .tour-item{
+    display:flex;flex-wrap:wrap;gap:6px 20px;align-items:center;justify-content:space-between;
+    padding:22px 0;border-bottom:1px solid var(--line);
+  }
+  .tour-date{font-family:'Anton',sans-serif;font-size:1.1rem;min-width:110px;color:var(--accent)}
+  .tour-place{flex:1;min-width:200px}
+  .tour-place b{display:block;font-size:1.05rem}
+  .tour-place span{color:var(--fg-dim);font-size:0.9rem}
+  .tour-item .btn{padding:9px 18px;font-size:0.7rem}
+
+  /* discography grid */
+  .disco-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px}
+  .disco-card{aspect-ratio:1/1;background:linear-gradient(145deg,#1c1c22,#0e0e11);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;transition:.25s}
+  .disco-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+  .disco-card span{font-family:'Anton',sans-serif;font-size:1rem}
+
+  footer{padding:60px 20px 40px;text-align:center;border-top:1px solid var(--line);color:var(--fg-dim)}
+  .social-row{display:flex;gap:22px;justify-content:center;margin:24px 0;flex-wrap:wrap}
+  .social-row a{font-size:0.8rem;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid transparent}
+  .social-row a:hover{border-color:var(--accent);color:var(--accent)}
+
+  .placeholder-tag{
+    position:fixed;bottom:14px;right:14px;background:var(--accent-2);color:#fff;
+    font-size:0.65rem;letter-spacing:1px;text-transform:uppercase;padding:6px 10px;border-radius:3px;z-index:200;
+    font-family:'Space Grotesk',sans-serif;opacity:0.85;
+  }
+</style>
+</head>
+<body>
+
+<div class="placeholder-tag">Mockup 1 — Industrial Parallax</div>
+
+<nav>
+  <div class="logo">ORGY<span>.</span></div>
+  <div class="navlinks">
+    <a href="#tour">Tour</a>
+    <a href="#music">Music</a>
+    <a href="#band">Band</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div id="mobileMenu">
+  <a href="#tour" onclick="document.getElementById('mobileMenu').classList.remove('open')">Tour</a>
+  <a href="#music" onclick="document.getElementById('mobileMenu').classList.remove('open')">Music</a>
+  <a href="#band" onclick="document.getElementById('mobileMenu').classList.remove('open')">Band</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
+</div>
+
+<div class="parallax-wrap">
+  <div class="layer layer-bg" data-speed="0.2"></div>
+  <div class="layer layer-grid" data-speed="0.5"></div>
+  <div class="layer layer-noise" data-speed="0.1"></div>
+  <div class="hero-content" data-speed="-0.15">
+    <div class="kicker">Est. 1994 · Los Angeles</div>
+    <h1>ORGY</h1>
+    <p class="sub">Candyass · Vapor Transmission · Punk Statik Paranoia</p>
+    <div class="hero-cta">
+      <a class="btn solid" href="#tour">See Tour Dates</a>
+      <a class="btn ghost" href="#music">Listen Now</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="bar"></span></div>
+</div>
+
+<section id="news">
+  <div class="section-inner">
+    <div class="section-label">Latest</div>
+    <h2 class="section-title">2026 UK Tour<br>Just Announced</h2>
+    <p style="color:var(--fg-dim);max-width:600px">VIP access for all announced shows coming soon — more UK dates to be announced. Full details and ticket links below.</p>
+  </div>
+</section>
+
+<div class="band-break">
+  <div class="layer layer-photo" style="position:absolute;inset:0" data-speed="0.3"></div>
+  <div class="band-break-caption">
+    <h3>Three decades of industrial-rock intensity.</h3>
+    <p>[ Placeholder — full-bleed live/press photo goes here, parallax-scrolled against the copy. Final mockup uses licensed band photography supplied by D1 Music. ]</p>
+  </div>
+</div>
+
+<section id="tour">
+  <div class="section-inner">
+    <div class="section-label">On the Road</div>
+    <h2 class="section-title">Tour Dates</h2>
+    <div class="tour-list">
+      <div class="tour-item">
+        <div class="tour-date">08.20.26</div>
+        <div class="tour-place"><b>West Palm Beach, FL</b><span>iTHINK Financial Amphitheatre</span></div>
+        <a class="btn solid" href="#">Tickets</a>
+      </div>
+      <div class="tour-item">
+        <div class="tour-date">08.21.26</div>
+        <div class="tour-place"><b>Tampa, FL</b><span>MIDFLORIDA Credit Union Amphitheatre</span></div>
+        <a class="btn solid" href="#">Tickets</a>
+      </div>
+      <div class="tour-item">
+        <div class="tour-date">08.23.26</div>
+        <div class="tour-place"><b>Alpharetta, GA</b><span>Ameris Bank Amphitheatre</span></div>
+        <a class="btn solid" href="#">Tickets</a>
+      </div>
+      <div class="tour-item">
+        <div class="tour-date">08.24.26</div>
+        <div class="tour-place"><b>Charlotte, NC</b><span>PNC Music Pavilion</span></div>
+        <a class="btn solid" href="#">Tickets</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="music">
+  <div class="section-inner">
+    <div class="section-label">Discography</div>
+    <h2 class="section-title">Music</h2>
+    <div class="disco-grid">
+      <div class="disco-card"><span>Candyass</span></div>
+      <div class="disco-card"><span>Vapor Transmission</span></div>
+      <div class="disco-card"><span>Punk Statik Paranoia</span></div>
+      <div class="disco-card"><span>Talk Sick</span></div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="logo" style="justify-content:center;display:flex">ORGY<span>.</span></div>
+  <div class="social-row">
+    <a href="#">Facebook</a>
+    <a href="#">X / Twitter</a>
+    <a href="#">YouTube</a>
+    <a href="#">Instagram</a>
+    <a href="#">Merch Store</a>
+  </div>
+  <p>Booking &amp; press: management@d1music.com — placeholder</p>
+  <p style="margin-top:20px;font-size:0.75rem">© 2026 D1 Music. Site rebuild mockup — not for production use.</p>
+</footer>
+
+<script>
+  const layers = document.querySelectorAll('[data-speed]');
+  function onScroll(){
+    const y = window.scrollY;
+    layers.forEach(l=>{
+      const speed = parseFloat(l.dataset.speed);
+      l.style.transform = `translate3d(0, ${y*speed}px, 0)`;
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+</script>
+</body>
+</html>

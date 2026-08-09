@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ORGY — Mockup 4: Classic Refresh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#141416;
+    --bg-2:#1c1c1f;
+    --red:#b8121f;
+    --fg:#e9e9e7;
+    --dim:#9b9b9f;
+    --line:#2c2c30;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--fg);font-family:'Oswald',sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{text-transform:uppercase;font-weight:700;line-height:1.05}
+  a{color:inherit;text-decoration:none}
+
+  nav{
+    position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+    padding:16px 20px;background:var(--bg-2);border-bottom:3px solid var(--red);
+  }
+  .logo{font-weight:700;font-size:1.4rem;letter-spacing:3px}
+  .navlinks{display:none;gap:24px;font-size:0.85rem;text-transform:uppercase;font-weight:600;letter-spacing:1px}
+  .navlinks a:hover{color:var(--red)}
+  .burger{width:28px;height:22px;position:relative;background:none;border:none;cursor:pointer}
+  .burger span{position:absolute;left:0;right:0;height:3px;background:var(--fg)}
+  .burger span:nth-child(1){top:0}
+  .burger span:nth-child(2){top:9px}
+  .burger span:nth-child(3){top:18px}
+  @media(min-width:860px){.navlinks{display:flex}.burger{display:none}}
+  #mobileMenu{
+    position:fixed;inset:0;background:var(--bg-2);z-index:99;display:flex;flex-direction:column;justify-content:center;gap:24px;padding:0 30px;
+    transform:translateY(-100%);transition:transform .3s ease;border-bottom:6px solid var(--red);
+  }
+  #mobileMenu.open{transform:translateY(0)}
+  #mobileMenu a{font-size:2rem;text-transform:uppercase;font-weight:700}
+
+  .hero{
+    position:relative;padding:90px 20px 70px;text-align:center;
+    background:
+      linear-gradient(180deg, rgba(20,20,22,0.4), rgba(20,20,22,0.95)),
+      repeating-linear-gradient(45deg, #1a1a1c 0 12px, #17171a 12px 24px);
+    border-bottom:3px solid var(--red);
+  }
+  .hero h1{font-size:clamp(3.2rem,13vw,8rem);letter-spacing:4px}
+  .hero h1 .accent{color:var(--red)}
+  .hero .sub{margin-top:14px;color:var(--dim);letter-spacing:2px;font-size:0.95rem;text-transform:uppercase}
+  .hero-cta{margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{padding:13px 26px;text-transform:uppercase;font-weight:600;letter-spacing:1px;font-size:0.85rem;border:2px solid var(--fg)}
+  .btn.solid{background:var(--red);border-color:var(--red)}
+  .btn.solid:hover{background:#8f0e18;border-color:#8f0e18}
+  .btn.ghost:hover{background:var(--fg);color:var(--bg)}
+
+  section{padding:64px 20px;border-bottom:1px solid var(--line)}
+  .section-inner{max-width:1080px;margin:0 auto}
+  .section-title{font-size:clamp(2rem,6vw,3rem);margin-bottom:30px;position:relative;padding-left:18px}
+  .section-title::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:6px;background:var(--red)}
+
+  .tour-item{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:18px 0;border-bottom:1px solid var(--line)}
+  .tour-item .d{font-weight:700;font-size:1.1rem;color:var(--red);min-width:110px}
+  .tour-item .place b{display:block}
+  .tour-item .place span{color:var(--dim);font-size:0.88rem}
+
+  .disco-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px}
+  .disco-card{background:var(--bg-2);border:1px solid var(--line);border-top:4px solid var(--red);padding:24px 16px;text-align:center}
+  .disco-card span{font-weight:700;text-transform:uppercase}
+
+  .band-photo-strip{height:260px;background:repeating-linear-gradient(135deg,#1c1c1f 0 3px,#17171a 3px 6px);display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:0.85rem;letter-spacing:1px;text-transform:uppercase}
+
+  footer{padding:50px 20px;text-align:center;background:var(--bg-2)}
+  .social-row{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:18px 0;font-size:0.85rem;text-transform:uppercase;font-weight:600}
+  .social-row a:hover{color:var(--red)}
+  .placeholder-tag{position:fixed;bottom:14px;right:14px;background:var(--red);color:#fff;font-size:0.65rem;letter-spacing:1px;text-transform:uppercase;padding:6px 10px;z-index:200;font-weight:700}
+</style>
+</head>
+<body>
+<div class="placeholder-tag">Mockup 4 — Classic Refresh</div>
+<nav>
+  <div class="logo">ORGY</div>
+  <div class="navlinks"><a href="#tour">Tour</a><a href="#music">Music</a><a href="#band">Band</a><a href="#contact">Contact</a></div>
+  <button class="burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')"><span></span><span></span><span></span></button>
+</nav>
+<div id="mobileMenu">
+  <a href="#tour" onclick="document.getElementById('mobileMenu').classList.remove('open')">Tour</a>
+  <a href="#music" onclick="document.getElementById('mobileMenu').classList.remove('open')">Music</a>
+  <a href="#band" onclick="document.getElementById('mobileMenu').classList.remove('open')">Band</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
+</div>
+
+<div class="hero">
+  <h1>OR<span class="accent">G</span>Y</h1>
+  <p class="sub">Candyass · Vapor Transmission · Punk Statik Paranoia</p>
+  <div class="hero-cta">
+    <a class="btn solid" href="#tour">Tour Dates</a>
+    <a class="btn ghost" href="#music">Music</a>
+  </div>
+</div>
+
+<section id="tour">
+  <div class="section-inner">
+    <h2 class="section-title">Tour Dates</h2>
+    <div class="tour-item"><div class="d">Aug 20</div><div class="place"><b>West Palm Beach, FL</b><span>iTHINK Financial Amphitheatre</span></div><a class="btn solid" href="#">Tickets</a></div>
+    <div class="tour-item"><div class="d">Aug 21</div><div class="place"><b>Tampa, FL</b><span>MIDFLORIDA Credit Union Amphitheatre</span></div><a class="btn solid" href="#">Tickets</a></div>
+    <div class="tour-item"><div class="d">Aug 23</div><div class="place"><b>Alpharetta, GA</b><span>Ameris Bank Amphitheatre</span></div><a class="btn solid" href="#">Tickets</a></div>
+    <div class="tour-item"><div class="d">Aug 24</div><div class="place"><b>Charlotte, NC</b><span>PNC Music Pavilion</span></div><a class="btn solid" href="#">Tickets</a></div>
+  </div>
+</section>
+
+<div class="band-photo-strip">[ Placeholder — full-width band photo band ]</div>
+
+<section id="music">
+  <div class="section-inner">
+    <h2 class="section-title">Discography</h2>
+    <div class="disco-grid">
+      <div class="disco-card"><span>Candyass</span></div>
+      <div class="disco-card"><span>Vapor Transmission</span></div>
+      <div class="disco-card"><span>Punk Statik Paranoia</span></div>
+      <div class="disco-card"><span>Talk Sick</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="band">
+  <div class="section-inner">
+    <h2 class="section-title">Band</h2>
+    <p style="color:var(--dim);max-width:640px;line-height:1.7">[ Placeholder — existing band bio content migrated as-is from orgymusic.com, restyled into this layout. Preserves brand recognition for longtime fans while modernizing structure, typography, and mobile behavior. ]</p>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="logo" style="font-size:1.8rem">ORGY</div>
+  <div class="social-row">
+    <a href="#">Facebook</a><a href="#">X / Twitter</a><a href="#">YouTube</a><a href="#">Instagram</a><a href="#">Merch Store</a>
+  </div>
+  <p style="color:var(--dim);margin-top:10px">Booking &amp; press: management@d1music.com — placeholder</p>
+  <p style="margin-top:20px;font-size:0.7rem;color:#555">© 2026 D1 Music. Site rebuild mockup — not for production use.</p>
+</footer>
+</body>
+</html>
