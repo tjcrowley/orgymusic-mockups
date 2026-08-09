@@ -11,8 +11,8 @@
   :root{
     --bg:#0a0a0c;
     --bg-2:#131317;
-    --accent:#c9ff3d;
-    --accent-2:#ff2d55;
+    --accent:#e2101c;
+    --accent-2:#8a0000;
     --fg:#f2f2f0;
     --fg-dim:#9a9aa2;
     --line:#232329;
@@ -43,7 +43,7 @@
   .logo span{color:var(--accent)}
   .logo img.mark{height:30px;width:auto;display:block}
   .logo img.wordmark-nav{height:18px;width:auto;display:block}
-  .hero-mark{width:min(120px,22vw);margin:0 auto 18px;filter:drop-shadow(0 0 40px rgba(201,255,61,0.15))}
+  .hero-mark{width:min(120px,22vw);margin:0 auto 18px;filter:drop-shadow(0 0 40px rgba(226,16,28,0.35))}
   .hero-wordmark{width:min(460px,80vw);margin:0 auto;display:block}
   .footer-wordmark{height:34px;width:auto;margin:0 auto}
   .navlinks{display:none;gap:28px;font-size:0.85rem;letter-spacing:1px;text-transform:uppercase}
@@ -82,6 +82,27 @@
     opacity:0.06;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
+  .layer-streaks{
+    background-image:repeating-linear-gradient(112deg, transparent 0 70px, rgba(226,16,28,0.07) 70px 72px, transparent 72px 140px);
+  }
+  .embers{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+  .ember{position:absolute;bottom:-10px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px 1px var(--accent);animation:rise linear infinite}
+  @keyframes rise{
+    0%{transform:translate3d(0,0,0);opacity:0}
+    10%{opacity:1}
+    90%{opacity:0.8}
+    100%{transform:translate3d(var(--drift,0px),-115vh,0);opacity:0}
+  }
+  .scanline{position:absolute;inset:0;pointer-events:none;z-index:3;background:linear-gradient(rgba(255,255,255,0.035) 50%, transparent 50%);background-size:100% 4px;mix-blend-mode:overlay;opacity:0.4}
+
+  .ticker{overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2)}
+  .ticker-track{display:inline-block;padding:16px 0;animation:ticker 26s linear infinite}
+  .ticker-track span{display:inline-block;padding:0 26px;font-family:'Anton',sans-serif;letter-spacing:2px;font-size:1rem;color:var(--fg-dim)}
+  .ticker-track span.hl{color:var(--accent)}
+  @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1)}
+  .reveal.in{opacity:1;transform:translateY(0)}
   .hero-content{
     position:relative;z-index:2;text-align:center;padding:0 20px;
   }
@@ -124,7 +145,7 @@
     display:flex;align-items:flex-end;
   }
   .band-break .layer-photo{
-    background:linear-gradient(180deg, rgba(10,10,12,0) 0%, rgba(10,10,12,0.95) 100%), repeating-linear-gradient(135deg,#1a1a1f 0 2px, #141418 2px 4px);
+    background:linear-gradient(180deg, rgba(10,10,12,0.1) 0%, rgba(10,10,12,0.97) 100%), repeating-linear-gradient(135deg,#1a1a1f 0 2px, #141418 2px 4px);
   }
   .band-break-caption{position:relative;z-index:2;padding:40px;max-width:700px}
   .band-break-caption h3{font-size:clamp(1.6rem,5vw,2.6rem);margin-bottom:12px}
@@ -185,10 +206,12 @@
 </div>
 
 <div class="parallax-wrap">
-  <div class="layer layer-bg" data-speed="0.2"></div>
+  <div class="layer layer-bg" data-speed="0.15"></div>
+  <div class="layer layer-streaks" data-speed="0.8"></div>
   <div class="layer layer-grid" data-speed="0.5"></div>
+  <div class="embers" data-speed="0.05"></div>
   <div class="layer layer-noise" data-speed="0.1"></div>
-  <div class="hero-content" data-speed="-0.15">
+  <div class="hero-content" data-speed="-0.2">
     <img class="hero-mark" src="../assets/orgy-logo.webp" alt="">
     <div class="kicker">Est. 1994 · Los Angeles</div>
     <img class="hero-wordmark" src="../assets/orgy-wordmark-red.png" alt="Orgy">
@@ -198,20 +221,28 @@
       <a class="btn ghost" href="#music">Listen Now</a>
     </div>
   </div>
+  <div class="scanline"></div>
   <div class="scroll-cue"><span>Scroll</span><span class="bar"></span></div>
+</div>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="hl">CANDYASS</span><span>·</span><span>VAPOR TRANSMISSION</span><span>·</span><span class="hl">PUNK STATIK PARANOIA</span><span>·</span><span>WEST PALM BEACH</span><span>·</span><span class="hl">TAMPA</span><span>·</span><span>ALPHARETTA</span><span>·</span><span class="hl">CHARLOTTE</span><span>·</span>
+    <span class="hl">CANDYASS</span><span>·</span><span>VAPOR TRANSMISSION</span><span>·</span><span class="hl">PUNK STATIK PARANOIA</span><span>·</span><span>WEST PALM BEACH</span><span>·</span><span class="hl">TAMPA</span><span>·</span><span>ALPHARETTA</span><span>·</span><span class="hl">CHARLOTTE</span><span>·</span>
+  </div>
 </div>
 
 <section id="news">
   <div class="section-inner">
-    <div class="section-label">Latest</div>
-    <h2 class="section-title">2026 UK Tour<br>Just Announced</h2>
-    <p style="color:var(--fg-dim);max-width:600px">VIP access for all announced shows coming soon — more UK dates to be announced. Full details and ticket links below.</p>
+    <div class="section-label reveal">Latest</div>
+    <h2 class="section-title reveal">2026 UK Tour<br>Just Announced</h2>
+    <p class="reveal" style="color:var(--fg-dim);max-width:600px">VIP access for all announced shows coming soon — more UK dates to be announced. Full details and ticket links below.</p>
   </div>
 </section>
 
 <div class="band-break">
-  <div class="layer layer-photo" style="position:absolute;inset:0" data-speed="0.3"></div>
-  <div class="band-break-caption">
+  <div class="layer layer-photo" style="position:absolute;inset:0" data-speed="0.3" data-scale="1.25"></div>
+  <div class="band-break-caption reveal">
     <h3>Three decades of industrial-rock intensity.</h3>
     <p>[ Placeholder — full-bleed live/press photo goes here, parallax-scrolled against the copy. Final mockup uses licensed band photography supplied by D1 Music. ]</p>
   </div>
@@ -219,25 +250,25 @@
 
 <section id="tour">
   <div class="section-inner">
-    <div class="section-label">On the Road</div>
-    <h2 class="section-title">Tour Dates</h2>
+    <div class="section-label reveal">On the Road</div>
+    <h2 class="section-title reveal">Tour Dates</h2>
     <div class="tour-list">
-      <div class="tour-item">
+      <div class="tour-item reveal">
         <div class="tour-date">08.20.26</div>
         <div class="tour-place"><b>West Palm Beach, FL</b><span>iTHINK Financial Amphitheatre</span></div>
         <a class="btn solid" href="#">Tickets</a>
       </div>
-      <div class="tour-item">
+      <div class="tour-item reveal" style="transition-delay:.06s">
         <div class="tour-date">08.21.26</div>
         <div class="tour-place"><b>Tampa, FL</b><span>MIDFLORIDA Credit Union Amphitheatre</span></div>
         <a class="btn solid" href="#">Tickets</a>
       </div>
-      <div class="tour-item">
+      <div class="tour-item reveal" style="transition-delay:.12s">
         <div class="tour-date">08.23.26</div>
         <div class="tour-place"><b>Alpharetta, GA</b><span>Ameris Bank Amphitheatre</span></div>
         <a class="btn solid" href="#">Tickets</a>
       </div>
-      <div class="tour-item">
+      <div class="tour-item reveal" style="transition-delay:.18s">
         <div class="tour-date">08.24.26</div>
         <div class="tour-place"><b>Charlotte, NC</b><span>PNC Music Pavilion</span></div>
         <a class="btn solid" href="#">Tickets</a>
@@ -248,13 +279,13 @@
 
 <section id="music">
   <div class="section-inner">
-    <div class="section-label">Discography</div>
-    <h2 class="section-title">Music</h2>
+    <div class="section-label reveal">Discography</div>
+    <h2 class="section-title reveal">Music</h2>
     <div class="disco-grid">
-      <div class="disco-card"><span>Candyass</span></div>
-      <div class="disco-card"><span>Vapor Transmission</span></div>
-      <div class="disco-card"><span>Punk Statik Paranoia</span></div>
-      <div class="disco-card"><span>Talk Sick</span></div>
+      <div class="disco-card reveal"><span>Candyass</span></div>
+      <div class="disco-card reveal" style="transition-delay:.06s"><span>Vapor Transmission</span></div>
+      <div class="disco-card reveal" style="transition-delay:.12s"><span>Punk Statik Paranoia</span></div>
+      <div class="disco-card reveal" style="transition-delay:.18s"><span>Talk Sick</span></div>
     </div>
   </div>
 </section>
@@ -274,15 +305,54 @@
 
 <script>
   const layers = document.querySelectorAll('[data-speed]');
+  const hero = document.querySelector('.hero-content');
   function onScroll(){
     const y = window.scrollY;
+    const vh = window.innerHeight;
+    const heroProgress = Math.min(y / (vh * 0.9), 1);
     layers.forEach(l=>{
       const speed = parseFloat(l.dataset.speed);
-      l.style.transform = `translate3d(0, ${y*speed}px, 0)`;
+      const baseScale = l.dataset.scale ? parseFloat(l.dataset.scale) : 1;
+      let scale = baseScale;
+      if(l === hero){
+        scale = 1 - heroProgress * 0.3;
+        l.style.opacity = 1 - heroProgress * 1.15;
+      }
+      l.style.transform = `translate3d(0, ${y*speed}px, 0) scale(${scale})`;
     });
   }
   window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
   onScroll();
+
+  // ember particles
+  const emberField = document.querySelector('.embers');
+  if(emberField){
+    for(let i=0;i<22;i++){
+      const e = document.createElement('div');
+      e.className = 'ember';
+      const size = 2 + Math.random()*3;
+      e.style.width = size+'px';
+      e.style.height = size+'px';
+      e.style.left = Math.random()*100+'%';
+      e.style.setProperty('--drift', (Math.random()*80-40)+'px');
+      e.style.animationDuration = (6 + Math.random()*8)+'s';
+      e.style.animationDelay = (Math.random()*10)+'s';
+      emberField.appendChild(e);
+    }
+  }
+
+  // scroll-reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.2});
+  revealEls.forEach(el=>io.observe(el));
 </script>
 </body>
 </html>
