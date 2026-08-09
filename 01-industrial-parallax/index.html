@@ -41,8 +41,11 @@
   }
   .logo{font-family:'Anton',sans-serif;font-size:1.4rem;letter-spacing:2px;display:flex;align-items:center;gap:10px}
   .logo span{color:var(--accent)}
-  .logo img{height:34px;width:auto;display:block}
-  .hero-logo{width:min(220px,38vw);margin:0 auto 10px;filter:drop-shadow(0 0 40px rgba(201,255,61,0.15))}
+  .logo img.mark{height:30px;width:auto;display:block}
+  .logo img.wordmark-nav{height:18px;width:auto;display:block}
+  .hero-mark{width:min(120px,22vw);margin:0 auto 18px;filter:drop-shadow(0 0 40px rgba(201,255,61,0.15))}
+  .hero-wordmark{width:min(460px,80vw);margin:0 auto;display:block}
+  .footer-wordmark{height:34px;width:auto;margin:0 auto}
   .navlinks{display:none;gap:28px;font-size:0.85rem;letter-spacing:1px;text-transform:uppercase}
   .navlinks a:hover{color:var(--accent)}
   .burger{width:32px;height:32px;display:flex;flex-direction:column;justify-content:center;gap:6px;cursor:pointer;background:none;border:none}
@@ -162,7 +165,7 @@
 <div class="placeholder-tag">Mockup 1 — Industrial Parallax</div>
 
 <nav>
-  <div class="logo"><img src="../assets/orgy-logo.webp" alt="Orgy logo">ORGY<span>.</span></div>
+  <div class="logo"><img class="mark" src="../assets/orgy-logo.webp" alt=""><img class="wordmark-nav" src="../assets/orgy-wordmark-red.png" alt="Orgy"></div>
   <div class="navlinks">
     <a href="#tour">Tour</a>
     <a href="#music">Music</a>
@@ -186,9 +189,9 @@
   <div class="layer layer-grid" data-speed="0.5"></div>
   <div class="layer layer-noise" data-speed="0.1"></div>
   <div class="hero-content" data-speed="-0.15">
-    <img class="hero-logo" src="../assets/orgy-logo.webp" alt="Orgy logo">
+    <img class="hero-mark" src="../assets/orgy-logo.webp" alt="">
     <div class="kicker">Est. 1994 · Los Angeles</div>
-    <h1>ORGY</h1>
+    <img class="hero-wordmark" src="../assets/orgy-wordmark-red.png" alt="Orgy">
     <p class="sub">Candyass · Vapor Transmission · Punk Statik Paranoia</p>
     <div class="hero-cta">
       <a class="btn solid" href="#tour">See Tour Dates</a>
@@ -257,7 +260,7 @@
 </section>
 
 <footer id="contact">
-  <div class="logo" style="justify-content:center;display:flex">ORGY<span>.</span></div>
+  <div style="display:flex;justify-content:center"><img class="footer-wordmark" src="../assets/orgy-wordmark-red.png" alt="Orgy"></div>
   <div class="social-row">
     <a href="#">Facebook</a>
     <a href="#">X / Twitter</a>
