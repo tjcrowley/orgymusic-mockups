@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ORGY — Mockup 3: Glitch Poster</title>
+<link rel="icon" href="../assets/orgy-favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -24,8 +25,10 @@
     position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;
     padding:16px 18px;border-bottom:2px solid var(--fg);background:#000;
   }
-  .logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;position:relative}
-  .logo::after{content:"ORGY";position:absolute;left:2px;top:0;color:var(--mag);z-index:-1;opacity:0.7}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;position:relative;display:flex;align-items:center;gap:10px}
+  .logo::after{content:"ORGY";position:absolute;left:44px;top:0;color:var(--mag);z-index:-1;opacity:0.7}
+  .logo img{height:32px;width:auto;display:block}
+  .hero-logo{width:min(200px,36vw);margin:0 auto 14px}
   .navlinks{display:none;gap:22px;font-size:0.8rem;text-transform:uppercase}
   .navlinks a{border:1px solid var(--fg);padding:6px 12px}
   .navlinks a:hover{background:var(--acid);color:#000;border-color:var(--acid)}
@@ -102,7 +105,7 @@
 <body>
 <div class="placeholder-tag">Mockup 3 — Glitch Poster</div>
 <nav>
-  <div class="logo">ORGY</div>
+  <div class="logo"><img src="../assets/orgy-logo.webp" alt="Orgy logo">ORGY</div>
   <div class="navlinks"><a href="#tour">Tour</a><a href="#music">Music</a><a href="#band">Band</a><a href="#contact">Contact</a></div>
   <button class="burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')"><span></span><span></span><span></span></button>
 </nav>
@@ -115,6 +118,7 @@
 
 <div class="hero">
   <div class="hero-inner">
+    <img class="hero-logo" src="../assets/orgy-logo.webp" alt="Orgy logo">
     <div class="tag">// SINCE 1994 — LOS ANGELES</div>
     <h1 class="glitch-title">ORGY<span class="g1">ORGY</span><span class="g2">ORGY</span></h1>
     <p class="hero-sub">CANDYASS / VAPOR TRANSMISSION / PUNK STATIK PARANOIA</p>

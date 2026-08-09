@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ORGY — Mockup 1: Industrial Parallax</title>
+<link rel="icon" href="../assets/orgy-favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -38,8 +39,10 @@
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
-  .logo{font-family:'Anton',sans-serif;font-size:1.4rem;letter-spacing:2px}
+  .logo{font-family:'Anton',sans-serif;font-size:1.4rem;letter-spacing:2px;display:flex;align-items:center;gap:10px}
   .logo span{color:var(--accent)}
+  .logo img{height:34px;width:auto;display:block}
+  .hero-logo{width:min(220px,38vw);margin:0 auto 10px;filter:drop-shadow(0 0 40px rgba(201,255,61,0.15))}
   .navlinks{display:none;gap:28px;font-size:0.85rem;letter-spacing:1px;text-transform:uppercase}
   .navlinks a:hover{color:var(--accent)}
   .burger{width:32px;height:32px;display:flex;flex-direction:column;justify-content:center;gap:6px;cursor:pointer;background:none;border:none}
@@ -159,7 +162,7 @@
 <div class="placeholder-tag">Mockup 1 — Industrial Parallax</div>
 
 <nav>
-  <div class="logo">ORGY<span>.</span></div>
+  <div class="logo"><img src="../assets/orgy-logo.webp" alt="Orgy logo">ORGY<span>.</span></div>
   <div class="navlinks">
     <a href="#tour">Tour</a>
     <a href="#music">Music</a>
@@ -183,6 +186,7 @@
   <div class="layer layer-grid" data-speed="0.5"></div>
   <div class="layer layer-noise" data-speed="0.1"></div>
   <div class="hero-content" data-speed="-0.15">
+    <img class="hero-logo" src="../assets/orgy-logo.webp" alt="Orgy logo">
     <div class="kicker">Est. 1994 · Los Angeles</div>
     <h1>ORGY</h1>
     <p class="sub">Candyass · Vapor Transmission · Punk Statik Paranoia</p>
