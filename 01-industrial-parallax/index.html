@@ -43,8 +43,13 @@
   .logo span{color:var(--accent)}
   .logo img.mark{height:30px;width:auto;display:block}
   .logo img.wordmark-nav{height:18px;width:auto;display:block}
-  .hero-mark{width:min(120px,22vw);margin:0 auto 18px;filter:drop-shadow(0 0 40px rgba(226,16,28,0.35))}
-  .hero-wordmark{width:min(460px,80vw);margin:0 auto;display:block}
+  .glitch-title-wrap{position:relative;width:min(460px,80vw);margin:0 auto}
+  .glitch-title-wrap img{display:block;width:100%;height:auto}
+  .glitch-layer{position:absolute;top:0;left:0}
+  .glitch-layer.g1{clip-path:inset(0 0 55% 0);transform:translate(-4px,-2px);animation:g1 3.5s infinite;filter:brightness(0.5) saturate(1.6)}
+  .glitch-layer.g2{clip-path:inset(55% 0 0 0);transform:translate(4px,2px);animation:g2 2.7s infinite;filter:brightness(1.9) saturate(0.6)}
+  @keyframes g1{0%,90%,100%{transform:translate(-4px,-2px)}92%{transform:translate(6px,1px)}95%{transform:translate(-8px,2px)}}
+  @keyframes g2{0%,90%,100%{transform:translate(4px,2px)}92%{transform:translate(-6px,-1px)}95%{transform:translate(8px,-3px)}}
   .footer-wordmark{height:34px;width:auto;margin:0 auto}
   .navlinks{display:none;gap:28px;font-size:0.85rem;letter-spacing:1px;text-transform:uppercase}
   .navlinks a:hover{color:var(--accent)}
@@ -212,9 +217,12 @@
   <div class="embers" data-speed="0.05"></div>
   <div class="layer layer-noise" data-speed="0.1"></div>
   <div class="hero-content" data-speed="-0.2">
-    <img class="hero-mark" src="../assets/orgy-logo.webp" alt="">
     <div class="kicker">Est. 1994 · Los Angeles</div>
-    <img class="hero-wordmark" src="../assets/orgy-wordmark-red.png" alt="Orgy">
+    <div class="glitch-title-wrap">
+      <img src="../assets/orgy-wordmark-red.png" alt="Orgy">
+      <img class="glitch-layer g1" src="../assets/orgy-wordmark-red.png" alt="">
+      <img class="glitch-layer g2" src="../assets/orgy-wordmark-red.png" alt="">
+    </div>
     <p class="sub">Candyass · Vapor Transmission · Punk Statik Paranoia</p>
     <div class="hero-cta">
       <a class="btn solid" href="#tour">See Tour Dates</a>
