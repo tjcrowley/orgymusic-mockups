@@ -151,7 +151,7 @@
   .hero-cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
   .btn{
     padding:14px 26px;font-size:0.78rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;
-    border:1px solid var(--fg);transition:.2s;
+    border:1px solid var(--fg);border-radius:999px;transition:.2s;
   }
   .btn.solid{background:var(--accent);color:#fff;border-color:var(--accent)}
   .btn.solid:hover{background:#fff;color:#0a0a0c;border-color:#fff}
@@ -256,17 +256,18 @@
 
   /* newsletter signup */
   .newsletter{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;max-width:420px;margin:0 auto 6px}
-  .newsletter input{flex:1;min-width:180px;background:var(--bg-2);border:1px solid var(--line);color:var(--fg);padding:12px 14px;font-family:'IBM Plex Mono',monospace;font-size:0.85rem}
+  .newsletter input{flex:1;min-width:180px;background:var(--bg-2);border:1px solid var(--line);border-radius:999px;color:var(--fg);padding:12px 16px;font-family:'IBM Plex Mono',monospace;font-size:0.85rem}
   .newsletter input:focus{outline:none;border-color:var(--accent)}
   .newsletter .btn{padding:12px 20px;font-size:0.68rem;border:none;cursor:pointer}
 
   /* contact form */
   .contact-form{display:grid;gap:16px;max-width:560px}
   .contact-form input,.contact-form textarea{
-    background:var(--bg-2);border:1px solid var(--line);color:var(--fg);
-    padding:14px 16px;font-family:'IBM Plex Mono',monospace;font-size:0.9rem;width:100%;
+    background:var(--bg-2);border:1px solid var(--line);border-radius:14px;color:var(--fg);
+    padding:14px 18px;font-family:'IBM Plex Mono',monospace;font-size:0.9rem;width:100%;
   }
   .contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--accent)}
+  .contact-form input{border-radius:999px}
   .contact-form textarea{resize:vertical;min-height:120px}
   .contact-form .btn{justify-self:start;border:none;cursor:pointer}
 
