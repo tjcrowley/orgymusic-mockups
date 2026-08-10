@@ -101,6 +101,20 @@
     color:transparent;-webkit-text-stroke:1.5px rgba(226,16,28,0.16);
     pointer-events:none;user-select:none;
   }
+  /* crowd-facing-stage hero placeholder — swap for real crowd video once available */
+  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.5;filter:grayscale(0.35) contrast(1.2) brightness(0.65)}
+  .beams{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;opacity:0.55}
+  .beam{position:absolute;top:-15%;left:50%;width:2px;height:130%;background:linear-gradient(180deg, transparent, rgba(226,16,28,0.55) 40%, transparent 85%);transform-origin:top center;animation:beamSweep 8s ease-in-out infinite}
+  .beam.b2{left:38%;animation-duration:9.5s;animation-delay:-2s;background:linear-gradient(180deg, transparent, rgba(255,255,255,0.25) 40%, transparent 85%)}
+  .beam.b3{left:62%;animation-duration:7s;animation-delay:-4s}
+  .beam.b4{left:24%;animation-duration:10s;animation-delay:-1s;background:linear-gradient(180deg, transparent, rgba(255,255,255,0.18) 40%, transparent 85%)}
+  .beam.b5{left:76%;animation-duration:8.5s;animation-delay:-5s}
+  @keyframes beamSweep{0%,100%{transform:rotate(-16deg)}50%{transform:rotate(16deg)}}
+  .crowd-silhouette{position:absolute;bottom:0;left:0;right:0;height:26vh;min-height:160px;z-index:1;pointer-events:none}
+  .crowd-silhouette .base{position:absolute;inset:0;background:linear-gradient(180deg, transparent 0%, rgba(10,10,12,0.75) 30%, var(--bg) 90%)}
+  .crowd-silhouette .dots{position:absolute;left:0;right:0;bottom:0;height:68%;background-image:radial-gradient(circle, #000 44%, transparent 46%);background-size:22px 24px;background-position:0 6px;opacity:0.95}
+  .crowd-silhouette .dots.alt{background-size:17px 19px;background-position:9px 2px;opacity:0.7;height:52%}
+  .hero-placeholder-note{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);z-index:2;font-size:0.6rem;letter-spacing:1px;color:var(--fg-dim);text-transform:uppercase;opacity:0.6}
   .embers{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
   .ember{position:absolute;bottom:-10px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px 1px var(--accent);animation:rise linear infinite}
   @keyframes rise{
@@ -297,11 +311,23 @@
 
 <div class="parallax-wrap">
   <div class="layer layer-bg" data-speed="0.08"></div>
+  <!-- CROWD VIDEO PLACEHOLDER: swap for real crowd-facing-stage footage once Lou supplies it
+       (Mexico City 2025 / a wide festival crowd shot is the best candidate). Until then this
+       is a generated beam + crowd-silhouette treatment, not real photography. -->
+  <div class="beams" data-speed="0.15">
+    <div class="beam"></div><div class="beam b2"></div><div class="beam b3"></div><div class="beam b4"></div><div class="beam b5"></div>
+  </div>
   <div class="ghost-o" data-speed="0.04">O</div>
   <div class="layer layer-streaks" data-speed="0.55"></div>
   <div class="layer layer-grid" data-speed="0.3"></div>
   <div class="embers" data-speed="0.05"></div>
   <div class="layer layer-noise" data-speed="0.1"></div>
+  <div class="crowd-silhouette" data-speed="0.02">
+    <div class="base"></div>
+    <div class="dots"></div>
+    <div class="dots alt"></div>
+  </div>
+  <div class="hero-placeholder-note">Placeholder crowd/beam treatment — swap for real tour footage</div>
   <div class="hero-inner" data-speed="-0.28">
     <div class="hero-tag">EST. 1994 — LOS ANGELES</div>
     <div class="hero-wordmark-row">
