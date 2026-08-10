@@ -138,11 +138,10 @@
   .hero-tag::before{content:"";display:block;width:1px;height:44px;background:var(--line);margin:0 auto 12px}
   .hero-wordmark-row{max-width:640px;height:clamp(90px,14vw,150px);position:relative;transition:opacity .25s}
   .hero-wordmark-row.logo-swap{opacity:0.12}
-  .hero-wordmark-row img{width:100%;height:100%;object-fit:contain;object-position:left center;filter:invert(var(--logo-inv,0))}
-  #heroLogo.mb-screen img{mix-blend-mode:screen}
+  .hero-wordmark-row img{width:100%;height:100%;object-fit:contain;object-position:left center}
   .glitch-layer{position:absolute;top:0;left:0;width:100%;height:100%}
-  .glitch-layer.g1{clip-path:inset(0 0 55% 0);transform:translate(-4px,-2px);animation:g1 3.5s infinite;filter:brightness(0.5) saturate(1.6) invert(var(--logo-inv,0))}
-  .glitch-layer.g2{clip-path:inset(55% 0 0 0);transform:translate(4px,2px);animation:g2 2.7s infinite;filter:brightness(1.9) saturate(0.6) invert(var(--logo-inv,0))}
+  .glitch-layer.g1{clip-path:inset(0 0 55% 0);transform:translate(-4px,-2px);animation:g1 3.5s infinite;filter:brightness(0.5) saturate(1.6)}
+  .glitch-layer.g2{clip-path:inset(55% 0 0 0);transform:translate(4px,2px);animation:g2 2.7s infinite;filter:brightness(1.9) saturate(0.6)}
   @keyframes g1{0%,90%,100%{transform:translate(-4px,-2px)}92%{transform:translate(6px,1px)}95%{transform:translate(-8px,2px)}}
   @keyframes g2{0%,90%,100%{transform:translate(4px,2px)}92%{transform:translate(-6px,-1px)}95%{transform:translate(8px,-3px)}}
   .hero-sub{
@@ -225,7 +224,7 @@
   .legacy-logos{position:absolute;top:114px;left:0;right:0;z-index:2;display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:0 24px;max-width:1240px;margin:0 auto}
   .legacy-logos span.lbl{font-size:0.62rem;letter-spacing:2px;color:var(--fg-dim);text-transform:uppercase;margin-right:4px}
   .legacy-logos .chip{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.02);opacity:0.7}
-  .legacy-logos .chip img{width:20px;height:20px;object-fit:contain;filter:grayscale(1) brightness(1.4)}
+  .legacy-logos .chip img{width:22px;height:22px;object-fit:contain}
   .legacy-logos .chip:hover{opacity:1;border-color:var(--accent)}
 
   /* merch callout box */
@@ -331,7 +330,7 @@
   </div>
   <div class="hero-placeholder-note">Placeholder crowd/beam treatment — swap for real tour footage</div>
   <div class="hero-inner" data-speed="-0.28">
-    <div class="hero-tag">EST. 1994 — LOS ANGELES</div>
+    <div class="hero-tag">EST. 1997 — LOS ANGELES</div>
     <div class="hero-wordmark-row" id="heroLogo">
       <img id="logoBase" src="../assets/orgy-wordmark-red.png" alt="Orgy">
       <img class="glitch-layer g1" id="logoG1" src="../assets/orgy-wordmark-red.png" alt="">
@@ -343,11 +342,11 @@
     </div>
   </div>
   <div class="legacy-logos reveal">
-    <span class="lbl">Since 1994</span>
-    <div class="chip"><img src="../assets/orgy-logo.webp" alt="Orgy logo — era 1"></div>
-    <div class="chip"><img src="../assets/orgy-logo.webp" alt="Orgy logo — era 2"></div>
-    <div class="chip"><img src="../assets/orgy-logo.webp" alt="Orgy logo — era 3"></div>
-    <div class="chip"><img src="../assets/orgy-logo.webp" alt="Orgy logo — era 4"></div>
+    <span class="lbl">Since 1997</span>
+    <div class="chip"><img src="../assets/legacy-logos/logo-era-1.png" alt="Orgy logo — era 1"></div>
+    <div class="chip"><img src="../assets/legacy-logos/logo-era-2.png" alt="Orgy logo — era 2"></div>
+    <div class="chip"><img src="../assets/legacy-logos/logo-era-3.png" alt="Orgy logo — era 3"></div>
+    <div class="chip"><img src="../assets/legacy-logos/logo-era-4.png" alt="Orgy logo — era 4"></div>
   </div>
   <div class="scanline"></div>
   <div class="scroll-cue"><span class="bar"></span><span>Scroll</span></div>
@@ -557,23 +556,22 @@
   }
 
   // rotating historic-logo glitch treatment
+  // Source art normalized offline (ImageMagick) to matching red-on-transparent
+  // PNGs, tight-cropped to each glyph's bounding box — see assets/legacy-logos/.
   // NOTE: chronological era order unconfirmed — currently just the order the
   // logo files were supplied in. Reorder the array below once Darren confirms.
   const logos = [
-    {src:'../assets/orgy-wordmark-red.png', inv:0, screen:false},
-    {src:'../assets/legacy-logos/logo-era-1.jpg', inv:0, screen:true},
-    {src:'../assets/legacy-logos/logo-era-2.webp', inv:1, screen:true},
-    {src:'../assets/legacy-logos/logo-era-3.webp', inv:1, screen:true},
-    {src:'../assets/legacy-logos/logo-era-4.webp', inv:1, screen:true},
+    '../assets/orgy-wordmark-red.png',
+    '../assets/legacy-logos/logo-era-1.png',
+    '../assets/legacy-logos/logo-era-2.png',
+    '../assets/legacy-logos/logo-era-3.png',
+    '../assets/legacy-logos/logo-era-4.png',
   ];
   let logoIdx = 0;
   const heroLogo = document.getElementById('heroLogo');
   const logoImgs = [document.getElementById('logoBase'), document.getElementById('logoG1'), document.getElementById('logoG2')];
   function setLogo(i){
-    const l = logos[i];
-    logoImgs.forEach(img => img.src = l.src);
-    heroLogo.style.setProperty('--logo-inv', l.inv);
-    heroLogo.classList.toggle('mb-screen', l.screen);
+    logoImgs.forEach(img => img.src = logos[i]);
   }
   if(heroLogo){
     setInterval(()=>{
