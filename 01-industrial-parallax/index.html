@@ -195,17 +195,30 @@
   .tour-place span{color:var(--fg-dim);font-size:0.85rem}
   .tour-item .btn{padding:9px 18px;font-size:0.68rem}
 
-  /* discography — numbered stack instead of a uniform card grid */
-  .disco-list{display:flex;flex-direction:column}
-  .disco-row{
-    display:flex;align-items:center;gap:24px;padding:22px 0;border-bottom:1px solid var(--line);
-    transition:.2s;
+  /* legacy logo strip (hero) */
+  .legacy-logos{position:absolute;top:78px;left:0;right:0;z-index:2;display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:0 24px;max-width:1240px;margin:0 auto}
+  .legacy-logos span.lbl{font-size:0.62rem;letter-spacing:2px;color:var(--fg-dim);text-transform:uppercase;margin-right:4px}
+  .legacy-logos .chip{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.02);opacity:0.7}
+  .legacy-logos .chip img{width:20px;height:20px;object-fit:contain;filter:grayscale(1) brightness(1.4)}
+  .legacy-logos .chip:hover{opacity:1;border-color:var(--accent)}
+
+  /* merch callout box */
+  .merch-box{
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;
+    border:1px solid var(--line);padding:32px;background:var(--bg-2);
   }
-  .disco-row:hover{padding-left:14px;border-color:var(--accent)}
-  .disco-index{font-family:'Anton',sans-serif;color:var(--line);font-size:1.4rem;min-width:40px}
-  .disco-row:hover .disco-index{color:var(--accent)}
-  .disco-name{font-family:'Anton',sans-serif;font-size:clamp(1.2rem,3.4vw,1.9rem);text-transform:uppercase;flex:1}
-  .disco-year{color:var(--fg-dim);font-size:0.8rem}
+  .merch-box h2{font-size:clamp(1.6rem,4vw,2.2rem);text-align:left}
+  .merch-box p{color:var(--fg-dim);margin-top:8px;max-width:420px}
+
+  /* contact form */
+  .contact-form{display:grid;gap:16px;max-width:560px}
+  .contact-form input,.contact-form textarea{
+    background:var(--bg-2);border:1px solid var(--line);color:var(--fg);
+    padding:14px 16px;font-family:'IBM Plex Mono',monospace;font-size:0.9rem;width:100%;
+  }
+  .contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--accent)}
+  .contact-form textarea{resize:vertical;min-height:120px}
+  .contact-form .btn{justify-self:start;border:none;cursor:pointer}
 
   footer{padding:60px 24px 40px;text-align:center;border-top:1px solid var(--line);color:var(--fg-dim)}
   .social-row{display:flex;gap:20px;justify-content:center;margin:24px 0;flex-wrap:wrap}
@@ -226,9 +239,9 @@
 <nav>
   <div class="logo"><img class="mark" src="../assets/orgy-logo.webp" alt=""><img class="wordmark-nav" src="../assets/orgy-wordmark-red.png" alt="Orgy"></div>
   <div class="navlinks">
-    <a href="#tour">Tour</a>
-    <a href="#music">Music</a>
-    <a href="#band">Band</a>
+    <a href="#news">News</a>
+    <a href="#tour">Tour Dates</a>
+    <a href="#merch">Merch</a>
     <a href="#contact">Contact</a>
   </div>
   <button class="burger" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
@@ -237,9 +250,9 @@
 </nav>
 
 <div id="mobileMenu">
-  <a href="#tour" onclick="document.getElementById('mobileMenu').classList.remove('open')">Tour</a>
-  <a href="#music" onclick="document.getElementById('mobileMenu').classList.remove('open')">Music</a>
-  <a href="#band" onclick="document.getElementById('mobileMenu').classList.remove('open')">Band</a>
+  <a href="#news" onclick="document.getElementById('mobileMenu').classList.remove('open')">News</a>
+  <a href="#tour" onclick="document.getElementById('mobileMenu').classList.remove('open')">Tour Dates</a>
+  <a href="#merch" onclick="document.getElementById('mobileMenu').classList.remove('open')">Merch</a>
   <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
 </div>
 
@@ -260,8 +273,15 @@
     <p class="hero-sub">Candyass · Vapor Transmission · Punk Statik Paranoia</p>
     <div class="hero-cta">
       <a class="btn solid" href="#tour">See Tour Dates</a>
-      <a class="btn ghost" href="#music">Listen Now</a>
+      <a class="btn ghost" href="#merch">Buy Merch</a>
     </div>
+  </div>
+  <div class="legacy-logos reveal">
+    <span class="lbl">Since 1994</span>
+    <div class="chip"><img src="../assets/orgy-logo.webp" alt="Orgy logo — era 1"></div>
+    <div class="chip"><img src="../assets/orgy-logo.webp" alt="Orgy logo — era 2"></div>
+    <div class="chip"><img src="../assets/orgy-logo.webp" alt="Orgy logo — era 3"></div>
+    <div class="chip"><img src="../assets/orgy-logo.webp" alt="Orgy logo — era 4"></div>
   </div>
   <div class="scanline"></div>
   <div class="scroll-cue"><span class="bar"></span><span>Scroll</span></div>
@@ -288,8 +308,8 @@
 <div class="band-break">
   <div class="layer layer-photo" style="position:absolute;inset:0" data-zoom="1"></div>
   <div class="band-break-caption reveal">
-    <h3>Three decades of industrial-rock intensity.</h3>
-    <p>Press photo supplied by D1 Music — swap for final high-res selects before launch.</p>
+    <h3>From the Road</h3>
+    <p>Placeholder — swap for a shot of Jay, Manson &amp; Zombie together once the tour kicks off. Occasional road pics only, no gallery to maintain.</p>
   </div>
 </div>
 
@@ -303,52 +323,62 @@
       <div class="tour-item reveal">
         <div class="tour-date">08.20.26</div>
         <div class="tour-place"><b>West Palm Beach, FL</b><span>iTHINK Financial Amphitheatre</span></div>
-        <a class="btn solid" href="#">Tickets</a>
+        <div style="display:flex;gap:8px"><a class="btn ghost" href="#">VIP / Meet &amp; Greet</a><a class="btn solid" href="#">Tickets</a></div>
       </div>
       <div class="tour-item reveal" style="transition-delay:.06s">
         <div class="tour-date">08.21.26</div>
         <div class="tour-place"><b>Tampa, FL</b><span>MIDFLORIDA Credit Union Amphitheatre</span></div>
-        <a class="btn solid" href="#">Tickets</a>
+        <div style="display:flex;gap:8px"><a class="btn ghost" href="#">VIP / Meet &amp; Greet</a><a class="btn solid" href="#">Tickets</a></div>
       </div>
       <div class="tour-item reveal" style="transition-delay:.12s">
         <div class="tour-date">08.23.26</div>
         <div class="tour-place"><b>Alpharetta, GA</b><span>Ameris Bank Amphitheatre</span></div>
-        <a class="btn solid" href="#">Tickets</a>
+        <div style="display:flex;gap:8px"><a class="btn ghost" href="#">VIP / Meet &amp; Greet</a><a class="btn solid" href="#">Tickets</a></div>
       </div>
       <div class="tour-item reveal" style="transition-delay:.18s">
         <div class="tour-date">08.24.26</div>
         <div class="tour-place"><b>Charlotte, NC</b><span>PNC Music Pavilion</span></div>
-        <a class="btn solid" href="#">Tickets</a>
+        <div style="display:flex;gap:8px"><a class="btn ghost" href="#">VIP / Meet &amp; Greet</a><a class="btn solid" href="#">Tickets</a></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="music">
+<section id="merch">
   <div class="section-inner">
-    <div class="section-head">
-      <h2 class="reveal">Discography</h2>
-      <span class="count reveal">4 releases</span>
-    </div>
-    <div class="disco-list">
-      <div class="disco-row reveal"><span class="disco-index">01</span><span class="disco-name">Orgy</span><span class="disco-year">1998</span></div>
-      <div class="disco-row reveal" style="transition-delay:.06s"><span class="disco-index">02</span><span class="disco-name">Candyass</span><span class="disco-year">1998</span></div>
-      <div class="disco-row reveal" style="transition-delay:.12s"><span class="disco-index">03</span><span class="disco-name">Vapor Transmission</span><span class="disco-year">2000</span></div>
-      <div class="disco-row reveal" style="transition-delay:.18s"><span class="disco-index">04</span><span class="disco-name">Punk Statik Paranoia</span><span class="disco-year">2004</span></div>
+    <div class="merch-box reveal">
+      <div>
+        <h2>Merch</h2>
+        <p>Shop the full store, shipped and handled separately at orgymerch.com.</p>
+      </div>
+      <a class="btn solid" href="https://orgymerch.com" target="_blank" rel="noopener">Shop Orgy Merch →</a>
     </div>
   </div>
 </section>
 
-<footer id="contact">
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2 class="reveal">Contact</h2>
+      <span class="count reveal">Booking &amp; press</span>
+    </div>
+    <form class="contact-form reveal" onsubmit="return false;">
+      <input type="text" placeholder="Name" required>
+      <input type="email" placeholder="Email" required>
+      <textarea placeholder="Message"></textarea>
+      <button class="btn solid" type="submit">Send to Lou →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
   <div style="display:flex;justify-content:center"><img class="footer-wordmark" src="../assets/orgy-wordmark-red.png" alt="Orgy"></div>
   <div class="social-row">
     <a href="#">Facebook</a>
     <a href="#">X / Twitter</a>
     <a href="#">YouTube</a>
     <a href="#">Instagram</a>
-    <a href="#">Merch Store</a>
   </div>
-  <p>Booking &amp; press: management@d1music.com — placeholder</p>
   <p style="margin-top:20px;font-size:0.7rem">© 2026 D1 Music. Site rebuild mockup — not for production use.</p>
 </footer>
 
