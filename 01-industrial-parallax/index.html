@@ -136,11 +136,13 @@
     color:var(--fg-dim);letter-spacing:3px;font-size:0.72rem;text-transform:uppercase;
   }
   .hero-tag::before{content:"";display:block;width:1px;height:44px;background:var(--line);margin:0 auto 12px}
-  .hero-wordmark-row{max-width:640px;position:relative}
-  .hero-wordmark-row img{width:100%;height:auto}
-  .glitch-layer{position:absolute;top:0;left:0;width:100%}
-  .glitch-layer.g1{clip-path:inset(0 0 55% 0);transform:translate(-4px,-2px);animation:g1 3.5s infinite;filter:brightness(0.5) saturate(1.6)}
-  .glitch-layer.g2{clip-path:inset(55% 0 0 0);transform:translate(4px,2px);animation:g2 2.7s infinite;filter:brightness(1.9) saturate(0.6)}
+  .hero-wordmark-row{max-width:640px;height:clamp(90px,14vw,150px);position:relative;transition:opacity .25s}
+  .hero-wordmark-row.logo-swap{opacity:0.12}
+  .hero-wordmark-row img{width:100%;height:100%;object-fit:contain;object-position:left center;filter:invert(var(--logo-inv,0))}
+  #heroLogo.mb-screen img{mix-blend-mode:screen}
+  .glitch-layer{position:absolute;top:0;left:0;width:100%;height:100%}
+  .glitch-layer.g1{clip-path:inset(0 0 55% 0);transform:translate(-4px,-2px);animation:g1 3.5s infinite;filter:brightness(0.5) saturate(1.6) invert(var(--logo-inv,0))}
+  .glitch-layer.g2{clip-path:inset(55% 0 0 0);transform:translate(4px,2px);animation:g2 2.7s infinite;filter:brightness(1.9) saturate(0.6) invert(var(--logo-inv,0))}
   @keyframes g1{0%,90%,100%{transform:translate(-4px,-2px)}92%{transform:translate(6px,1px)}95%{transform:translate(-8px,2px)}}
   @keyframes g2{0%,90%,100%{transform:translate(4px,2px)}92%{transform:translate(-6px,-1px)}95%{transform:translate(8px,-3px)}}
   .hero-sub{
@@ -330,12 +332,11 @@
   <div class="hero-placeholder-note">Placeholder crowd/beam treatment — swap for real tour footage</div>
   <div class="hero-inner" data-speed="-0.28">
     <div class="hero-tag">EST. 1994 — LOS ANGELES</div>
-    <div class="hero-wordmark-row">
-      <img src="../assets/orgy-wordmark-red.png" alt="Orgy">
-      <img class="glitch-layer g1" src="../assets/orgy-wordmark-red.png" alt="">
-      <img class="glitch-layer g2" src="../assets/orgy-wordmark-red.png" alt="">
+    <div class="hero-wordmark-row" id="heroLogo">
+      <img id="logoBase" src="../assets/orgy-wordmark-red.png" alt="Orgy">
+      <img class="glitch-layer g1" id="logoG1" src="../assets/orgy-wordmark-red.png" alt="">
+      <img class="glitch-layer g2" id="logoG2" src="../assets/orgy-wordmark-red.png" alt="">
     </div>
-    <p class="hero-sub">Candyass · Vapor Transmission · Punk Statik Paranoia</p>
     <div class="hero-cta">
       <a class="btn solid" href="#tour">See Tour Dates</a>
       <a class="btn ghost" href="#merch">Buy Merch</a>
@@ -354,8 +355,8 @@
 
 <div class="ticker">
   <div class="ticker-track">
-    <span class="hl">Candyass</span><span>·</span><span>Vapor Transmission</span><span>·</span><span class="hl">Punk Statik Paranoia</span><span>·</span><span>West Palm Beach</span><span>·</span><span class="hl">Tampa</span><span>·</span><span>Alpharetta</span><span>·</span><span class="hl">Charlotte</span><span>·</span>
-    <span class="hl">Candyass</span><span>·</span><span>Vapor Transmission</span><span>·</span><span class="hl">Punk Statik Paranoia</span><span>·</span><span>West Palm Beach</span><span>·</span><span class="hl">Tampa</span><span>·</span><span>Alpharetta</span><span>·</span><span class="hl">Charlotte</span><span>·</span>
+    <span class="hl">New Single "Dangerous Lyfe" Out Now</span><span>·</span><span>West Palm Beach</span><span>·</span><span class="hl">Tampa</span><span>·</span><span>Alpharetta</span><span>·</span><span class="hl">Charlotte</span><span>·</span>
+    <span class="hl">New Single "Dangerous Lyfe" Out Now</span><span>·</span><span>West Palm Beach</span><span>·</span><span class="hl">Tampa</span><span>·</span><span>Alpharetta</span><span>·</span><span class="hl">Charlotte</span><span>·</span>
   </div>
 </div>
 
@@ -553,6 +554,36 @@
       e.style.animationDelay = (Math.random()*10)+'s';
       emberField.appendChild(e);
     }
+  }
+
+  // rotating historic-logo glitch treatment
+  // NOTE: chronological era order unconfirmed — currently just the order the
+  // logo files were supplied in. Reorder the array below once Darren confirms.
+  const logos = [
+    {src:'../assets/orgy-wordmark-red.png', inv:0, screen:false},
+    {src:'../assets/legacy-logos/logo-era-1.jpg', inv:0, screen:true},
+    {src:'../assets/legacy-logos/logo-era-2.webp', inv:1, screen:true},
+    {src:'../assets/legacy-logos/logo-era-3.webp', inv:1, screen:true},
+    {src:'../assets/legacy-logos/logo-era-4.webp', inv:1, screen:true},
+  ];
+  let logoIdx = 0;
+  const heroLogo = document.getElementById('heroLogo');
+  const logoImgs = [document.getElementById('logoBase'), document.getElementById('logoG1'), document.getElementById('logoG2')];
+  function setLogo(i){
+    const l = logos[i];
+    logoImgs.forEach(img => img.src = l.src);
+    heroLogo.style.setProperty('--logo-inv', l.inv);
+    heroLogo.classList.toggle('mb-screen', l.screen);
+  }
+  if(heroLogo){
+    setInterval(()=>{
+      logoIdx = (logoIdx + 1) % logos.length;
+      heroLogo.classList.add('logo-swap');
+      setTimeout(()=>{
+        setLogo(logoIdx);
+        heroLogo.classList.remove('logo-swap');
+      }, 180);
+    }, 4500);
   }
 
   // scroll-reveal
