@@ -30,9 +30,18 @@
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
 
+  /* ---- NEXT SHOW BAR ---- */
+  .next-show-bar{
+    position:fixed;top:0;left:0;right:0;z-index:101;
+    background:var(--accent);color:#fff;text-align:center;
+    padding:9px 12px;font-size:0.7rem;letter-spacing:1px;text-transform:uppercase;
+  }
+  .next-show-bar a{display:block}
+  .next-show-bar .lbl{font-weight:700;margin-right:8px}
+
   /* ---- NAV ---- */
   nav{
-    position:fixed;top:0;left:0;right:0;z-index:100;
+    position:fixed;top:36px;left:0;right:0;z-index:100;
     display:flex;align-items:center;justify-content:space-between;
     padding:16px 20px;
     background:rgba(10,10,12,0.75);
@@ -108,7 +117,7 @@
     padding:0 24px 90px;max-width:1240px;margin:0 auto;
   }
   .hero-tag{
-    position:absolute;top:110px;left:24px;
+    position:absolute;top:146px;left:24px;
     writing-mode:vertical-rl;text-orientation:mixed;
     color:var(--fg-dim);letter-spacing:3px;font-size:0.72rem;text-transform:uppercase;
   }
@@ -192,11 +201,12 @@
   .tour-date{font-family:'Anton',sans-serif;font-size:1.05rem;min-width:110px;color:var(--accent)}
   .tour-place{flex:1;min-width:200px}
   .tour-place b{display:block;font-size:1.05rem;font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:0.5px}
-  .tour-place span{color:var(--fg-dim);font-size:0.85rem}
+  .tour-place span{color:var(--fg-dim);font-size:0.85rem;display:block}
+  .tour-place span.support{opacity:0.75;font-style:italic;font-size:0.78rem}
   .tour-item .btn{padding:9px 18px;font-size:0.68rem}
 
   /* legacy logo strip (hero) */
-  .legacy-logos{position:absolute;top:78px;left:0;right:0;z-index:2;display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:0 24px;max-width:1240px;margin:0 auto}
+  .legacy-logos{position:absolute;top:114px;left:0;right:0;z-index:2;display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:0 24px;max-width:1240px;margin:0 auto}
   .legacy-logos span.lbl{font-size:0.62rem;letter-spacing:2px;color:var(--fg-dim);text-transform:uppercase;margin-right:4px}
   .legacy-logos .chip{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.02);opacity:0.7}
   .legacy-logos .chip img{width:20px;height:20px;object-fit:contain;filter:grayscale(1) brightness(1.4)}
@@ -209,6 +219,31 @@
   }
   .merch-box h2{font-size:clamp(1.6rem,4vw,2.2rem);text-align:left}
   .merch-box p{color:var(--fg-dim);margin-top:8px;max-width:420px}
+
+  /* featured merch product grid */
+  .merch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-top:24px}
+  .merch-item{border:1px solid var(--line);background:var(--bg-2);padding:14px;display:block}
+  .merch-item img{width:100%;aspect-ratio:1;object-fit:cover;margin-bottom:12px;background:#000}
+  .merch-item b{display:block;font-size:0.82rem;text-transform:uppercase;letter-spacing:0.3px}
+  .merch-item .price{display:block;color:var(--accent);font-size:0.8rem;margin-top:6px}
+  .merch-item:hover{border-color:var(--accent)}
+
+  /* follow the band — member social links */
+  .band-social-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;margin-top:24px}
+  .band-social-item{border:1px solid var(--line);padding:18px;text-align:center}
+  .band-social-item b{display:block;font-family:'Anton',sans-serif;text-transform:uppercase;margin-bottom:10px;font-size:1.05rem}
+  .band-social-item a{display:inline-block;font-size:0.68rem;letter-spacing:1px;text-transform:uppercase;margin:2px 6px;color:var(--fg-dim)}
+  .band-social-item a:hover{color:var(--accent)}
+
+  /* instagram feed placeholder */
+  .ig-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+  .ig-tile{aspect-ratio:1;border:1px solid var(--line);background:var(--bg-2);display:flex;align-items:center;justify-content:center;color:var(--fg-dim);font-size:0.62rem;letter-spacing:1px;text-transform:uppercase}
+
+  /* newsletter signup */
+  .newsletter{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;max-width:420px;margin:0 auto 6px}
+  .newsletter input{flex:1;min-width:180px;background:var(--bg-2);border:1px solid var(--line);color:var(--fg);padding:12px 14px;font-family:'IBM Plex Mono',monospace;font-size:0.85rem}
+  .newsletter input:focus{outline:none;border-color:var(--accent)}
+  .newsletter .btn{padding:12px 20px;font-size:0.68rem;border:none;cursor:pointer}
 
   /* contact form */
   .contact-form{display:grid;gap:16px;max-width:560px}
@@ -235,6 +270,10 @@
 <body>
 
 <div class="placeholder-tag">Mockup 1 — Industrial Parallax</div>
+
+<div class="next-show-bar">
+  <a href="#tour"><span class="lbl">Next Show</span>Aug 20 — West Palm Beach, FL →</a>
+</div>
 
 <nav>
   <div class="logo"><img class="mark" src="../assets/orgy-logo.webp" alt=""><img class="wordmark-nav" src="../assets/orgy-wordmark-red.png" alt="Orgy"></div>
@@ -303,6 +342,19 @@
       <p class="reveal">VIP access for all announced shows coming soon — more UK dates to be announced. Full details and ticket links below.</p>
     </div>
   </div>
+  <div class="section-inner news-split" style="margin-top:60px;padding-top:50px;border-top:1px solid var(--line)">
+    <div class="news-year reveal">EP</div>
+    <div class="news-body">
+      <div class="tag-label reveal">Out Now</div>
+      <h2 class="reveal">New Single<br>&ldquo;Dangerous Lyfe&rdquo;</h2>
+      <p class="reveal">&ldquo;We've been called industrial rock stalwarts. That gives us a lot of pride, but the thrill is still creating new music and performing live for our fans.&rdquo; &mdash; Jay Gordon</p>
+      <div class="hero-cta reveal" style="margin-top:24px">
+        <a class="btn ghost" href="https://open.spotify.com/artist/4uYwLU7k03RCQSRXGtQGg0" target="_blank" rel="noopener">Spotify</a>
+        <a class="btn ghost" href="https://music.apple.com/us/artist/orgy/148215" target="_blank" rel="noopener">Apple Music</a>
+        <a class="btn ghost" href="https://www.youtube.com/user/OrgyMusic" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <div class="band-break">
@@ -322,22 +374,22 @@
     <div class="tour-list">
       <div class="tour-item reveal">
         <div class="tour-date">08.20.26</div>
-        <div class="tour-place"><b>West Palm Beach, FL</b><span>iTHINK Financial Amphitheatre</span></div>
+        <div class="tour-place"><b>West Palm Beach, FL</b><span>iTHINK Financial Amphitheatre</span><span class="support">w/ Rob Zombie &amp; Marilyn Manson</span></div>
         <div style="display:flex;gap:8px"><a class="btn ghost" href="#">VIP / Meet &amp; Greet</a><a class="btn solid" href="#">Tickets</a></div>
       </div>
       <div class="tour-item reveal" style="transition-delay:.06s">
         <div class="tour-date">08.21.26</div>
-        <div class="tour-place"><b>Tampa, FL</b><span>MIDFLORIDA Credit Union Amphitheatre</span></div>
+        <div class="tour-place"><b>Tampa, FL</b><span>MIDFLORIDA Credit Union Amphitheatre</span><span class="support">w/ Rob Zombie &amp; Marilyn Manson</span></div>
         <div style="display:flex;gap:8px"><a class="btn ghost" href="#">VIP / Meet &amp; Greet</a><a class="btn solid" href="#">Tickets</a></div>
       </div>
       <div class="tour-item reveal" style="transition-delay:.12s">
         <div class="tour-date">08.23.26</div>
-        <div class="tour-place"><b>Alpharetta, GA</b><span>Ameris Bank Amphitheatre</span></div>
+        <div class="tour-place"><b>Alpharetta, GA</b><span>Ameris Bank Amphitheatre</span><span class="support">w/ Rob Zombie &amp; Marilyn Manson</span></div>
         <div style="display:flex;gap:8px"><a class="btn ghost" href="#">VIP / Meet &amp; Greet</a><a class="btn solid" href="#">Tickets</a></div>
       </div>
       <div class="tour-item reveal" style="transition-delay:.18s">
         <div class="tour-date">08.24.26</div>
-        <div class="tour-place"><b>Charlotte, NC</b><span>PNC Music Pavilion</span></div>
+        <div class="tour-place"><b>Charlotte, NC</b><span>Truliant Amphitheater</span><span class="support">w/ Rob Zombie &amp; Marilyn Manson</span></div>
         <div style="display:flex;gap:8px"><a class="btn ghost" href="#">VIP / Meet &amp; Greet</a><a class="btn solid" href="#">Tickets</a></div>
       </div>
     </div>
@@ -352,6 +404,55 @@
         <p>Shop the full store, shipped and handled separately at orgymerch.com.</p>
       </div>
       <a class="btn solid" href="https://orgymerch.com" target="_blank" rel="noopener">Shop Orgy Merch →</a>
+    </div>
+    <div class="merch-grid reveal">
+      <a class="merch-item" href="https://orgymerch.com/products/orgy-vip-experience-freaks-on-parade-tour" target="_blank" rel="noopener">
+        <img src="https://orgymerch.com/cdn/shop/files/Addaheading_1.png?v=1769209148&width=800" alt="Orgy VIP Experience — Zombie x Manson Tour">
+        <b>VIP Experience — Zombie × Manson Tour</b><span class="price">From $125</span>
+      </a>
+      <a class="merch-item" href="https://orgymerch.com/products/candyass-25-year-commemorative-t-shirt" target="_blank" rel="noopener">
+        <img src="https://orgymerch.com/cdn/shop/files/Candyass.png?v=1745722875&width=800" alt="Candyass 25-Year Commemorative T-Shirt">
+        <b>Candyass 25-Year T-Shirt</b><span class="price">From $55</span>
+      </a>
+      <a class="merch-item" href="https://orgymerch.com/products/autographed-candyass-vinyl" target="_blank" rel="noopener">
+        <img src="https://orgymerch.com/cdn/shop/files/candyass.jpg?v=1724016968&width=800" alt="Candyass Vinyl Album — Autographed">
+        <b>Candyass Vinyl — Autographed</b><span class="price">$100</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="follow">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2 class="reveal">Follow The Band</h2>
+      <span class="count reveal">Straight from the road</span>
+    </div>
+    <div class="band-social-grid reveal">
+      <div class="band-social-item"><b>Jay</b><a href="https://www.instagram.com/jaygmusic" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/jaygordonmusic/" target="_blank" rel="noopener">Facebook</a></div>
+      <div class="band-social-item"><b>Carlton</b><a href="https://www.instagram.com/carlton_bost" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/carlton.bost.3" target="_blank" rel="noopener">Facebook</a></div>
+      <div class="band-social-item"><b>Nic</b><a href="https://www.instagram.com/nicspeck" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/nic.speck" target="_blank" rel="noopener">Facebook</a></div>
+      <div class="band-social-item"><b>Ilia</b><a href="https://www.instagram.com/iliayordanov" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/ilia.yordanov" target="_blank" rel="noopener">Facebook</a></div>
+      <div class="band-social-item"><b>Tommy</b><a href="https://www.instagram.com/tommythevillain" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/tom.rockoff" target="_blank" rel="noopener">Facebook</a></div>
+      <div class="band-social-item"><b>Joey</b><a href="https://www.instagram.com/joeyscreamofficial" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/joey.hollearn" target="_blank" rel="noopener">Facebook</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="instagram">
+  <div class="section-inner">
+    <div class="section-head">
+      <h2 class="reveal">From The Gram</h2>
+      <span class="count reveal"><a href="https://www.instagram.com/orgyofficial" target="_blank" rel="noopener">@orgyofficial →</a></span>
+    </div>
+    <p class="reveal" style="color:var(--fg-dim);max-width:520px;margin-bottom:24px">Backstage shots, tour announcements, and unfiltered moments from the road — pulled live from Instagram.</p>
+    <div class="ig-grid reveal">
+      <div class="ig-tile">IG post</div>
+      <div class="ig-tile">IG post</div>
+      <div class="ig-tile">IG post</div>
+      <div class="ig-tile">IG post</div>
+      <div class="ig-tile">IG post</div>
+      <div class="ig-tile">IG post</div>
     </div>
   </div>
 </section>
@@ -373,6 +474,11 @@
 
 <footer>
   <div style="display:flex;justify-content:center"><img class="footer-wordmark" src="../assets/orgy-wordmark-red.png" alt="Orgy"></div>
+  <p class="tag-label" style="margin-top:24px">Get show &amp; release alerts</p>
+  <form class="newsletter" onsubmit="return false;">
+    <input type="email" placeholder="Email address" required>
+    <button class="btn solid" type="submit">Notify Me</button>
+  </form>
   <div class="social-row">
     <a href="#">Facebook</a>
     <a href="#">X / Twitter</a>
