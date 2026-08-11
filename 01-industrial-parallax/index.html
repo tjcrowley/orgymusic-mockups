@@ -8,6 +8,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  /* "Hacked" by David Libeau — CC BY 4.0, credit required. See footer. */
+  @font-face{
+    font-family:'Hacked';
+    src:url('../assets/fonts/Hacked-KerX.ttf') format('truetype');
+    font-weight:normal;font-style:normal;font-display:swap;
+  }
   :root{
     --bg:#0a0a0c;
     --bg-2:#131317;
@@ -26,7 +32,7 @@
     overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
   }
-  h1,h2,h3,.display{font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:0.5px;line-height:0.92}
+  h1,h2,h3,.display{font-family:'Hacked','Anton',sans-serif;text-transform:uppercase;letter-spacing:0.5px;line-height:0.92}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
 
@@ -71,7 +77,7 @@
     transform:translateY(-100%);transition:transform .35s ease;
   }
   #mobileMenu.open{transform:translateY(0)}
-  #mobileMenu a{font-family:'Anton',sans-serif;font-size:2.2rem;text-transform:uppercase}
+  #mobileMenu a{font-family:'Hacked','Anton',sans-serif;font-size:2.2rem;text-transform:uppercase}
 
   /* ---- PARALLAX HERO ---- */
   .parallax-wrap{
@@ -97,7 +103,7 @@
   }
   .ghost-o{
     position:absolute;top:50%;right:-8vw;transform:translateY(-53%);
-    font-family:'Anton',sans-serif;font-size:min(85vh,900px);line-height:1;
+    font-family:'Hacked','Anton',sans-serif;font-size:min(85vh,900px);line-height:1;
     color:transparent;-webkit-text-stroke:1.5px rgba(226,16,28,0.16);
     pointer-events:none;user-select:none;
   }
@@ -181,7 +187,7 @@
   /* asymmetric news split */
   .news-split{display:grid;grid-template-columns:1fr;gap:26px}
   @media(min-width:800px){.news-split{grid-template-columns:200px 1fr;gap:50px;align-items:end}}
-  .news-year{font-family:'Anton',sans-serif;font-size:clamp(3rem,8vw,5rem);color:transparent;-webkit-text-stroke:1.5px var(--line);line-height:0.85}
+  .news-year{font-family:'Hacked','Anton',sans-serif;font-size:clamp(3rem,8vw,5rem);color:transparent;-webkit-text-stroke:1.5px var(--line);line-height:0.85}
   .news-body h2{font-size:clamp(1.8rem,5vw,3rem);margin-bottom:16px;text-align:left}
   .news-body p{color:var(--fg-dim);max-width:560px}
   .tag-label{display:inline-block;color:var(--accent);letter-spacing:3px;font-size:0.7rem;text-transform:uppercase;margin-bottom:14px}
@@ -213,9 +219,9 @@
     display:flex;flex-wrap:wrap;gap:6px 20px;align-items:center;justify-content:space-between;
     padding:20px 0;border-bottom:1px solid var(--line);
   }
-  .tour-date{font-family:'Anton',sans-serif;font-size:1.05rem;min-width:110px;color:var(--accent)}
+  .tour-date{font-family:'Hacked','Anton',sans-serif;font-size:1.05rem;min-width:110px;color:var(--accent)}
   .tour-place{flex:1;min-width:200px}
-  .tour-place b{display:block;font-size:1.05rem;font-family:'Anton',sans-serif;text-transform:uppercase;letter-spacing:0.5px}
+  .tour-place b{display:block;font-size:1.05rem;font-family:'Hacked','Anton',sans-serif;text-transform:uppercase;letter-spacing:0.5px}
   .tour-place span{color:var(--fg-dim);font-size:0.85rem;display:block}
   .tour-place span.support{opacity:0.75;font-style:italic;font-size:0.78rem}
   .tour-item .btn{padding:9px 18px;font-size:0.68rem}
@@ -246,7 +252,7 @@
   /* follow the band — member social links */
   .band-social-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;margin-top:24px}
   .band-social-item{border:1px solid var(--line);padding:18px;text-align:center}
-  .band-social-item b{display:block;font-family:'Anton',sans-serif;text-transform:uppercase;margin-bottom:10px;font-size:1.05rem}
+  .band-social-item b{display:block;font-family:'Hacked','Anton',sans-serif;text-transform:uppercase;margin-bottom:10px;font-size:1.05rem}
   .band-social-item a{display:inline-block;font-size:0.68rem;letter-spacing:1px;text-transform:uppercase;margin:2px 6px;color:var(--fg-dim)}
   .band-social-item a:hover{color:var(--accent)}
 
@@ -513,6 +519,7 @@
     <a href="#">Instagram</a>
   </div>
   <p style="margin-top:20px;font-size:0.7rem">© 2026 D1 Music. Site rebuild mockup — not for production use.</p>
+  <p style="margin-top:6px;font-size:0.62rem;opacity:0.6">Heading font "Hacked" by David Libeau, used under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" style="text-decoration:underline">CC BY 4.0</a>.</p>
 </footer>
 
 <script>
