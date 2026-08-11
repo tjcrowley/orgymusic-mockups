@@ -198,14 +198,21 @@
     display:flex;align-items:flex-end;
   }
   .band-break .layer-photo{
-    background:
+    background-color:var(--bg);
+    background-image:
       linear-gradient(180deg, rgba(10,10,12,0.25) 0%, rgba(10,10,12,0.97) 100%),
       linear-gradient(0deg, rgba(10,10,12,0.6), transparent 40%),
       url("../assets/band-photo.jpg");
-    background-size:cover;
-    background-position:center 20%;
+    background-repeat:no-repeat;
+    background-size:auto, auto, cover;
+    background-position:center, center, center 20%;
     filter:grayscale(0.25) contrast(1.1);
     transform-origin:center;
+  }
+  @media(max-width:700px){
+    /* full band visible on mobile — letterboxed instead of cropped */
+    .band-break{height:60vh;min-height:340px}
+    .band-break .layer-photo{background-size:auto, auto, contain;background-position:center, center, center center}
   }
   .band-break-caption{position:relative;z-index:2;padding:0 24px 60px;max-width:1180px;margin:0 auto;width:100%}
   .band-break-caption h3{font-size:clamp(1.6rem,5vw,2.8rem);margin-bottom:14px;text-align:left;max-width:640px}
