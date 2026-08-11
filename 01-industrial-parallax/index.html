@@ -108,7 +108,7 @@
     pointer-events:none;user-select:none;
   }
   /* crowd-facing-stage hero placeholder — swap for real crowd video once available */
-  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.5;filter:grayscale(0.35) contrast(1.2) brightness(0.65)}
+  .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.4;filter:grayscale(0.6) contrast(1.2) brightness(0.55)}
   .beams{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;opacity:0.55}
   .beam{position:absolute;top:-15%;left:50%;width:2px;height:130%;background:linear-gradient(180deg, transparent, rgba(226,16,28,0.55) 40%, transparent 85%);transform-origin:top center;animation:beamSweep 8s ease-in-out infinite}
   .beam.b2{left:38%;animation-duration:9.5s;animation-delay:-2s;background:linear-gradient(180deg, transparent, rgba(255,255,255,0.25) 40%, transparent 85%)}
@@ -326,6 +326,14 @@
 
 <div class="parallax-wrap">
   <div class="layer layer-bg" data-speed="0.08"></div>
+  <!-- VJ backdrop loop, pulled from Lou's Mexico City 2025 "Stitches" backdrop export
+       (the "portal" segment, not the busier circuit-HUD segment). Desaturated/dimmed
+       so it reads as texture/motion behind the grid+embers, not a color story that
+       competes with the red brand accent. Sits behind grid/embers/ghost-O by DOM order. -->
+  <video class="hero-video" autoplay muted loop playsinline preload="auto"
+    poster="../assets/hero-loops/hero-loop-1-poster.jpg">
+    <source src="../assets/hero-loops/hero-loop-1-web.mp4" type="video/mp4">
+  </video>
   <!-- CROWD VIDEO PLACEHOLDER: swap for real crowd-facing-stage footage once Lou supplies it
        (Mexico City 2025 / a wide festival crowd shot is the best candidate). Until then this
        is a generated beam + crowd-silhouette treatment, not real photography. -->
